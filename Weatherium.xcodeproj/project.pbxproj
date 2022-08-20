@@ -8,17 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
-		5A58AEFA28B0D36F00FDFF70 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* ContentView.swift */; };
+		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
 		5A58AEFF28B0D37300FDFF70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFE28B0D37300FDFF70 /* Preview Assets.xcassets */; };
+		5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF0728B0E34900FDFF70 /* CityListCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5A58AEF428B0D36F00FDFF70 /* Weatherium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheriumApp.swift; sourceTree = "<group>"; };
-		5A58AEF928B0D36F00FDFF70 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5A58AEF928B0D36F00FDFF70 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A58AEFE28B0D37300FDFF70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5A58AF0728B0E34900FDFF70 /* CityListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +53,9 @@
 		5A58AEF628B0D36F00FDFF70 /* Weatherium */ = {
 			isa = PBXGroup;
 			children = (
+				5A58AF0528B0E2C400FDFF70 /* Views */,
+				5A58AF0628B0E2C900FDFF70 /* Resources */,
 				5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */,
-				5A58AEF928B0D36F00FDFF70 /* ContentView.swift */,
-				5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */,
 				5A58AEFD28B0D37300FDFF70 /* Preview Content */,
 			);
 			path = Weatherium;
@@ -65,6 +67,23 @@
 				5A58AEFE28B0D37300FDFF70 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5A58AF0528B0E2C400FDFF70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AEF928B0D36F00FDFF70 /* MainView.swift */,
+				5A58AF0728B0E34900FDFF70 /* CityListCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5A58AF0628B0E2C900FDFF70 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A58AEFA28B0D36F00FDFF70 /* ContentView.swift in Sources */,
+				5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */,
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,
+				5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
