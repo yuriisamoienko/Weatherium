@@ -8,16 +8,30 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @StateObject private var viewModel: CitiesViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: CitiesViewModel())
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(1..<10) { row in
-                    CityListCellView()
+                ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
+                    let city = viewModel.cities[index]
+                    
+                    CityListCellView(
+                        name: city.name,
+                        weatherDescription: "weather Description",
+                        temperature: WeatherTemperature(high: 24, low: 11)
+                    )
                         .frame(height: 50)
-                 }
+                }
             }
             .navigationTitle("Weather Application")
         }
+        .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
     }
 }
 

@@ -12,6 +12,11 @@
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
 		5A58AEFF28B0D37300FDFF70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFE28B0D37300FDFF70 /* Preview Assets.xcassets */; };
 		5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF0728B0E34900FDFF70 /* CityListCellView.swift */; };
+		5A58AF0A28B0EA7600FDFF70 /* CitiesList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AF0928B0EA7600FDFF70 /* CitiesList.plist */; };
+		5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF0C28B0EC2200FDFF70 /* CitiesViewModel.swift */; };
+		5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1128B0EDC200FDFF70 /* EasyCodable.swift */; };
+		5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */; };
+		5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1B28B1092F00FDFF70 /* CError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A58AEFE28B0D37300FDFF70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5A58AF0728B0E34900FDFF70 /* CityListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCellView.swift; sourceTree = "<group>"; };
+		5A58AF0928B0EA7600FDFF70 /* CitiesList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CitiesList.plist; sourceTree = "<group>"; };
+		5A58AF0C28B0EC2200FDFF70 /* CitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewModel.swift; sourceTree = "<group>"; };
+		5A58AF1128B0EDC200FDFF70 /* EasyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCodable.swift; sourceTree = "<group>"; };
+		5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		5A58AF1B28B1092F00FDFF70 /* CError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,9 @@
 		5A58AEF628B0D36F00FDFF70 /* Weatherium */ = {
 			isa = PBXGroup;
 			children = (
+				5A58AF1328B0EE3000FDFF70 /* Helpers */,
+				5A58AF0E28B0ED7400FDFF70 /* Extensions */,
+				5A58AF0B28B0EC0B00FDFF70 /* Models */,
 				5A58AF0528B0E2C400FDFF70 /* Views */,
 				5A58AF0628B0E2C900FDFF70 /* Resources */,
 				5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */,
@@ -82,8 +95,50 @@
 			isa = PBXGroup;
 			children = (
 				5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */,
+				5A58AF0928B0EA7600FDFF70 /* CitiesList.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5A58AF0B28B0EC0B00FDFF70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AF0C28B0EC2200FDFF70 /* CitiesViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5A58AF0E28B0ED7400FDFF70 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5A58AF1328B0EE3000FDFF70 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AF1D28B11D9E00FDFF70 /* types */,
+				5A58AF1828B0F5A800FDFF70 /* protocols */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5A58AF1828B0F5A800FDFF70 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AF1128B0EDC200FDFF70 /* EasyCodable.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		5A58AF1D28B11D9E00FDFF70 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				5A58AF1B28B1092F00FDFF70 /* CError.swift */,
+			);
+			path = types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +201,7 @@
 			files = (
 				5A58AEFF28B0D37300FDFF70 /* Preview Assets.xcassets in Resources */,
 				5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */,
+				5A58AF0A28B0EA7600FDFF70 /* CitiesList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */,
+				5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */,
+				5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */,
+				5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */,
+				5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */,
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,
 				5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */,
 			);
