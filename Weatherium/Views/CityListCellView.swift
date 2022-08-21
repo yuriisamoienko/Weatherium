@@ -14,12 +14,29 @@ struct CityListCellView: View {
     let name: String
     let weatherDescription: String
     let temperature: WeatherTemperature
+    let iconUrl: URL?
     
     var body: some View {
+        GeometryReader { bodyGeometry in
         HStack {
-            Image(systemName: "pencil.circle.fill")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            AsyncImage(
+                url: iconUrl,
+                content: { $0
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .background(Color.accentColor)
+                },
+                placeholder: {
+                    ProgressView()
+                        .tint(.accentColor)
+                        .scaleEffect(1.3)
+                }
+            )
+            .frame(
+                width: bodyGeometry.size.height,
+                height: bodyGeometry.size.height
+            )
+            .cornerRadius(bodyGeometry.size.height/2)
             
             Spacer()
                 .frame(width: 10)
@@ -66,6 +83,7 @@ struct CityListCellView: View {
         .frame(
             maxWidth: .infinity
         )
+        }
     }
 }
 
@@ -74,11 +92,13 @@ struct CityListCellView_Previews: PreviewProvider {
         CityListCellView(
             name: "NightCity",
             weatherDescription: "weather is great today. The sun is shinning brightly",
-            temperature: WeatherTemperature(high: 24, low: 11)
+            temperature: WeatherTemperature(high: 24, low: 11),
+            iconUrl: URL(string: "https://openweathermap.org/img/wn/10d@2x.png")
         )
         .frame(width: 500, height: 50, alignment: .leading)
-            .previewLayout(PreviewLayout.sizeThatFits)
-            .padding()
-            .previewDisplayName("Default preview")
+        .previewLayout(PreviewLayout.sizeThatFits)
+        .padding()
+        .previewDisplayName("Default preview")
+        .preferredColorScheme(.light)
     }
 }

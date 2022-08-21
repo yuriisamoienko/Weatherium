@@ -19,9 +19,8 @@ struct MainView: View {
             List {
                 ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
                     let city = viewModel.cities[index]
-                    let weather = weatherViewModel.citiesWeather[city] ?? .init(weatherDescription: "", temperature: .invalid)
-//                    let weather = weatherData?.weather
-//                    let temperatures = weatherData.te
+                    let weather = weatherViewModel.citiesWeather[city] ?? .invalid
+                    let weatherIcon = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png")
                     
                     CityListCellView(
                         name: city.name,
@@ -29,7 +28,8 @@ struct MainView: View {
                         temperature: WeatherTemperature(
                             high: weather.temperature.high,
                             low: weather.temperature.low
-                        )
+                        ),
+                        iconUrl: weatherIcon
                     )
                         .frame(height: 50)
                 }

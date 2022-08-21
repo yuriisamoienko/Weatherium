@@ -12,6 +12,9 @@ import Combine
 struct WeatherData {
     let weatherDescription: String
     let temperature: WeatherTemperature
+    let icon: String
+    
+    static let invalid = WeatherData(weatherDescription: "", temperature: .invalid, icon: "")
 }
 
 @MainActor class WeatherViewModel: ObservableObject {
@@ -71,7 +74,8 @@ struct WeatherData {
                             temperature: WeatherTemperature(
                                 high: Int(weatherResponse.getMaxTemperature()),
                                 low: Int(weatherResponse.getMinTemperature())
-                            )
+                            ),
+                            icon: weatherResponse.getIconKey() ?? ""
                         )
 //                        print("weatherResponse: \n", weatherInCity)
                         self.citiesWeather[city] = weatherInCity
