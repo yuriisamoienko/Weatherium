@@ -48,7 +48,7 @@ struct CityListCellView: View {
                         alignment: .leading
                     )
                 Text(weatherDescription)
-                    .font(.footnote)
+                    .font(.callout)
                     .fixedSize(horizontal: false, vertical: true)
             }
             

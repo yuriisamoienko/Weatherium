@@ -12,7 +12,9 @@ struct MainView: View {
     @ObservedObject private var viewModel: CitiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
     @ObservedObject private var weatherViewModel: WeatherViewModel = WeatherViewModel() // warning fixed in swift 5.7
     
-    init() {}
+    init() {
+        
+    }
     
     var body: some View {
         NavigationView {
@@ -35,8 +37,10 @@ struct MainView: View {
                 }
             }
             .navigationTitle("Weather Application")
+            .navigationBarColor(background: .accentColor)
         }
         .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
+//        .background(Color.accentColor)
     }
 }
 
