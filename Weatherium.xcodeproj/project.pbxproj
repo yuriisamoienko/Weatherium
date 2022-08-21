@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A3EA00928B12C210043BEC2 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA00828B12C210043BEC2 /* CollectionExtension.swift */; };
+		5A3EA00F28B1463B0043BEC2 /* URLRequestExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA00E28B1463B0043BEC2 /* URLRequestExtension.swift */; };
+		5A3EA01128B2333C0043BEC2 /* SetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA01028B2333C0043BEC2 /* SetExtension.swift */; };
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
 		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
@@ -17,9 +20,14 @@
 		5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1128B0EDC200FDFF70 /* EasyCodable.swift */; };
 		5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */; };
 		5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1B28B1092F00FDFF70 /* CError.swift */; };
+		5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A3EA00828B12C210043BEC2 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
+		5A3EA00B28B13E500043BEC2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		5A3EA00E28B1463B0043BEC2 /* URLRequestExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtension.swift; sourceTree = "<group>"; };
+		5A3EA01028B2333C0043BEC2 /* SetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExtension.swift; sourceTree = "<group>"; };
 		5A58AEF428B0D36F00FDFF70 /* Weatherium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheriumApp.swift; sourceTree = "<group>"; };
 		5A58AEF928B0D36F00FDFF70 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -31,6 +39,7 @@
 		5A58AF1128B0EDC200FDFF70 /* EasyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyCodable.swift; sourceTree = "<group>"; };
 		5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		5A58AF1B28B1092F00FDFF70 /* CError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CError.swift; sourceTree = "<group>"; };
+		5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A3EA00A28B13E400043BEC2 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5A3EA00B28B13E500043BEC2 /* README.md */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		5A58AEEB28B0D36F00FDFF70 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +80,7 @@
 		5A58AEF628B0D36F00FDFF70 /* Weatherium */ = {
 			isa = PBXGroup;
 			children = (
+				5A3EA00A28B13E400043BEC2 /* SupportingFiles */,
 				5A58AF1328B0EE3000FDFF70 /* Helpers */,
 				5A58AF0E28B0ED7400FDFF70 /* Extensions */,
 				5A58AF0B28B0EC0B00FDFF70 /* Models */,
@@ -104,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				5A58AF0C28B0EC2200FDFF70 /* CitiesViewModel.swift */,
+				5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */,
+				5A3EA00828B12C210043BEC2 /* CollectionExtension.swift */,
+				5A3EA00E28B1463B0043BEC2 /* URLRequestExtension.swift */,
+				5A3EA01028B2333C0043BEC2 /* SetExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,11 +235,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */,
+				5A3EA00F28B1463B0043BEC2 /* URLRequestExtension.swift in Sources */,
 				5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */,
 				5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */,
 				5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */,
 				5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */,
+				5A3EA00928B12C210043BEC2 /* CollectionExtension.swift in Sources */,
+				5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */,
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,
+				5A3EA01128B2333C0043BEC2 /* SetExtension.swift in Sources */,
 				5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

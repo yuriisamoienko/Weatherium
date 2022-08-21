@@ -8,16 +8,18 @@
 import Foundation
 
 /*
- EasyCodable allows easily serialize & deserialize class & struct objects
+ EasyCodable allows easily encode & decode (serialize & deserialize) class & struct instances.
+ 
+ It allows create instances from redundant jsons (which constains more keys then needed) !!! It's very useful with http responses
 */
 
 import Foundation
 
-public protocol EasyCodable: Codable {
-    associatedtype ClassType
+protocol EasyCodable: Codable {
+    associatedtype InstanceType
     
-    // override it to decode class object from a redunat json
-    init(from dict: AnyDictionary) throws
+    // default empty constructor is required. Fill it with empty/zero/invalid values
+    init()
 }
 
 extension Array: EasyCodable where Element: EasyCodable {
@@ -35,72 +37,125 @@ extension Array: EasyCodable where Element: EasyCodable {
 extension Dictionary: EasyCodable where Key: EasyCodable, Value: EasyCodable {}
 extension String: EasyCodable {}
 
-public typealias AnyDictionary = [AnyHashable: Any]
+typealias AnyDictionary = [AnyHashable: Any]
 
 extension EasyCodable {
-    public typealias ClassType = Self
+    typealias InstanceType = Self
     
-    func encode() throws -> Data? {
-        var result: Data?
+    func encode() throws -> Data {
+        var result: Data
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(self)
             result = data
         } catch {
-            print("\(String(describing: type(of: self))) failed to encode with error: \(error.localizedDescription)")
-            throw error
+            throw CError(message: "\(String(describing: type(of: self))) failed to encode with error: \(error.localizedDescription)")
         }
         return result
     }
     
     func encodeAsString() throws -> String? {
         var result: String?
-        do {
-            if let data = try self.encode(),
-               let str = String(data: data, encoding: .utf8)
-            {
-                result = str
-            }
-        } catch {
-        throw error
+        let data = try self.encode()
+        if let str = String(data: data, encoding: .utf8) {
+            result = str
         }
         return result
     }
     
-    // override it to decode class object from a redunat json
-    public init(from dict: AnyDictionary) throws {
-        let data = try dict.toData()
-        self = try Self(data: data)
-    }
-    
-    static func decode(from json: String?) throws -> Self? {
+    static func decode(from json: String?) throws -> Self {
         guard let json = json else {
-            return nil
+            throw CError(message: "json is nil")
         }
         return try Self(data: json)
     }
     
-    public init(data json: String) throws {
+    init(data json: String) throws {
         let data = Data(json.utf8)
         self = try Self(data: data)
     }
     
-    static func decode(from data: Data?) throws -> Self? {
+    static func decode(from data: Data?) throws -> Self {
         guard let data = data else {
-            return nil
+            throw CError(message: "data is nil")
         }
         let result = try Self(data: data)
         return result
     }
     
-    init(data: Data) throws {
-        let decoder = JSONDecoder()
+    init(from dict: AnyDictionary) throws {
+        try self.init(from: dict, isReflectionPerformed: false)
+    }
+    
+    init(from dict: AnyDictionary, isReflectionPerformed: Bool) throws {
+        let data = try dict.toData()
         do {
-            self = try decoder.decode(ClassType, from: data)
+            try self.init(data: data, isReflectionPerformed: true) //because custom reflection will be done here in case of failure
         } catch {
-            print("\(String(describing: type(of: Self.self))) failed to decode data: \(data) with error: \(error.localizedDescription)")
+            if isReflectionPerformed == false {
+                guard let stringDict = dict as? [String: Any]
+                else {
+                    throw CError(message: "input dictionary isn't [String: Any]")
+                }
+                do {
+                    try self.init(byReflectionFrom: stringDict)
+                    return
+                } catch {
+                    throw error
+                }
+            } else {
+                throw error
+            }
+        }
+    }
+    
+    init(data: Data) throws {
+        try self.init(data: data, isReflectionPerformed: false)
+    }
+    
+    private init(data: Data, isReflectionPerformed: Bool) throws {
+        do {
+            self = try JSONDecoder().decode(InstanceType, from: data)
+        } catch {
+            let onErrror: (Error) -> Void = { error in
+                print("\(String(describing: type(of: Self.self))) failed to decode data: \(data) with error: \(error.localizedDescription)")
+            }
+            if isReflectionPerformed == false {
+                do {
+                    try self.init(byReflectionFrom: data)
+                    return
+                } catch {
+                    onErrror(error)
+                    throw error
+                }
+            }
+            onErrror(error)
             throw error
         }
     }
     
+    func convertToDictionary() throws -> [String: Any] {
+        let selfData: Data = try self.encode()
+        let result = try [String: Any](fromJsonData: selfData)
+        return result
+    }
+    
+    // MARK: Private Functions
+    
+    init(byReflectionFrom data: Data) throws {
+        let valuesDict = try [String: Any](fromJsonData: data)
+        self = try Self(byReflectionFrom: valuesDict)
+    }
+    
+    init(byReflectionFrom dict: [String: Any]) throws {
+        var resultDict = try Self().convertToDictionary()
+        try resultDict.replaceExistingValues(from: dict)
+        
+        do {
+            try self.init(from: resultDict, isReflectionPerformed: true)
+        } catch {
+            print(error.localizedDescription)
+            throw error
+        }
+    }
 }
