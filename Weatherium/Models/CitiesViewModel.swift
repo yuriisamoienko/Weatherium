@@ -8,9 +8,16 @@
 import Foundation
 import Combine
 
-struct WeatherTemperature {
+struct WeatherTemperature: Equatable {
     let high: Int
     let low: Int
+    
+    static let invalid = WeatherTemperature(high: Int.max, low: Int.min )
+    
+    func isInvalid() -> Bool {
+        let result = self == Self.invalid
+        return result
+    }
 }
 
 struct CityData {

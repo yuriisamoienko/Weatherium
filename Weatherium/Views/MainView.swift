@@ -19,7 +19,7 @@ struct MainView: View {
             List {
                 ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
                     let city = viewModel.cities[index]
-                    let weather = weatherViewModel.citiesWeather[city] ?? .init(weatherDescription: "unknown conditions", temperature: WeatherTemperature(high: 0, low: 0))
+                    let weather = weatherViewModel.citiesWeather[city] ?? .init(weatherDescription: "", temperature: .invalid)
 //                    let weather = weatherData?.weather
 //                    let temperatures = weatherData.te
                     

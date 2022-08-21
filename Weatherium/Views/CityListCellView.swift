@@ -58,6 +58,10 @@ struct CityListCellView: View {
                 }
             }
             .font(.subheadline)
+            .if(temperature.isInvalid(), content: { group in
+                group.hidden()
+            })
+            
         }
         .frame(
             maxWidth: .infinity
