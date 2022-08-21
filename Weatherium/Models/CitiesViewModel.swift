@@ -14,10 +14,18 @@ struct WeatherTemperature {
 }
 
 struct CityData {
-    let id: Int
+    let id: Int // it's a geoname
     let name: String
+    let country: String?
 }
-extension CityData: EasyCodable {}
+extension CityData: EasyCodable {
+    init() {
+        id = 0
+        name = ""
+        country = nil
+    }
+}
+extension CityData: Hashable {}
 
 @MainActor class CitiesViewModel: ObservableObject {
 

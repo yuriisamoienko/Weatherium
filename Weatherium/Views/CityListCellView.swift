@@ -9,14 +9,11 @@ import SwiftUI
 
 struct CityListCellView: View {
     
+    // MARK: Properties
+    
     let name: String
     let weatherDescription: String
     let temperature: WeatherTemperature
-//        var name: String
-
-//    init(name: String) {
-//        self.name = name
-//    }
     
     var body: some View {
         HStack {
@@ -29,9 +26,12 @@ struct CityListCellView: View {
             
             VStack(alignment: .leading) {
                 Text(name)
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .leading
+                    )
                 Text(weatherDescription)
                     .font(.footnote)
-                    .foregroundColor(.primary)
                     .fixedSize(horizontal: false, vertical: true)
             }
             
@@ -59,6 +59,9 @@ struct CityListCellView: View {
             }
             .font(.subheadline)
         }
+        .frame(
+            maxWidth: .infinity
+        )
     }
 }
 
@@ -69,7 +72,7 @@ struct CityListCellView_Previews: PreviewProvider {
             weatherDescription: "weather is great today. The sun is shinning brightly",
             temperature: WeatherTemperature(high: 24, low: 11)
         )
-            .frame(width: 300, height: 50, alignment: .center)
+        .frame(width: 500, height: 50, alignment: .leading)
             .previewLayout(PreviewLayout.sizeThatFits)
             .padding()
             .previewDisplayName("Default preview")

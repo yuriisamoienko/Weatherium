@@ -9,11 +9,10 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject private var viewModel: CitiesViewModel
+    @ObservedObject private var viewModel: CitiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
+    @ObservedObject private var weatherViewModel: WeatherViewModel = WeatherViewModel() // warning fixed in swift 5.7
     
-    init() {
-        self._viewModel = StateObject(wrappedValue: CitiesViewModel())
-    }
+    init() {}
     
     var body: some View {
         NavigationView {
