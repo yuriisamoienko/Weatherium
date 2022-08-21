@@ -14,31 +14,21 @@ struct WeatherData {
     let temperature: WeatherTemperature
 }
 
-//struct CityLocationData {
-//    let city: CityData
-//    let coordinate: CLLocationCoordinate2D?
-//}
-
 @MainActor class WeatherViewModel: ObservableObject {
 
-//    @ObservedObject
     private var citiesViewModel = CitiesViewModel()
     private var subscriptions = Set<AnyCancellable>()
 //    private var citiesLocations: [CityLocationData] = []
     
-    var citiesWeather: [CityData: WeatherData] = [:]
     
-//    @Published var citiesWeather
+    @Published var citiesWeather: [CityData: WeatherData] = [:]
     
     init() {
-//        citiesViewModel.cities.sy
         
         subscriptions = [
             citiesViewModel.$cities.sink(receiveValue: { (cities: [CityData]) in
                 Task {
-//                    self.citiesLocations = await cities.asyncMap { city in
-//                    for await city in cities {
-                    await cities.asyncForEach { city in
+                    for city in cities {
                         var coordinate: CLLocationCoordinate2D?
                         var address = city.name
                         if let country = city.country {
@@ -61,23 +51,14 @@ struct WeatherData {
                             print("failed create request from url: ", requestUrlString)
                             return
                         }
-//                        guard let url = URL(string: requestUrlString)
-//                        else {
-//                            print("failed create url from: ", requestUrlString)
-//                            return
-//                        }
                         let data: Data
-                        let response: URLResponse
                         do {
-                            (data, response) = try await URLSession.shared.data(for: request)
+                            (data, _) = try await URLSession.shared.data(for: request)
                         } catch {
                             print("url request: ", requestUrlString, "\nfailed with error:\n", requestUrlString)
                             return
                         }
                         
-//                        guard
-//                            let test = [String: Any](fromJsonData: data),
-//                              let weatherResponse = try? WeatherResponse(from: test)
                         let weatherResponse: WeatherResponse
                         do {
                             weatherResponse = try WeatherResponse.decode(from: data)
@@ -85,27 +66,21 @@ struct WeatherData {
                             print("failed decode WeatherResponse with error:", error.localizedDescription)
                             return
                         }
-                        print("weatherResponse: \n", weatherResponse)
-//                        if let coord = coordinate {
-//                            print(city.name)
-//                            print("\(coord.latitude),\(coord.longitude)")
-//                        }
-//                        let cityLocation = CityLocationData(city: city, coordinate: coordinate)
-//                        return cityLocation
+                        let weatherInCity = WeatherData(
+                            weatherDescription: weatherResponse.getDescription() ?? "",
+                            temperature: WeatherTemperature(
+                                high: Int(weatherResponse.getMaxTemperature()),
+                                low: Int(weatherResponse.getMinTemperature())
+                            )
+                        )
+//                        print("weatherResponse: \n", weatherInCity)
+                        self.citiesWeather[city] = weatherInCity
                     }
                     
                 }
             }),
         ]
-        
-        
-//        Task {
-//            do {
-//                _ = try await loadWeather()
-//            } catch {
-//                print("init cities failed with error \(error)")
-//            }
-//        }
+
     }
     
     private func getWeather(for coorditante: CLLocationCoordinate2D) async throws -> Int {
@@ -113,9 +88,6 @@ struct WeatherData {
             let onError: (String) -> Void = { message in
                 continuation.resume(throwing: CError(message: message))
             }
-            
-            
-            
             continuation.resume(returning: 0)
         }
     }
@@ -149,38 +121,31 @@ struct WeatherResponse: EasyCodable {
         weather = []
         main = MainInfo()
     }
-    /*
-    let description: String
-    let icon: String
-    let temp_min: Double
-    let temp_max: Double
-    
-//    init(from data: Data) throws {
-//        self = try JSONDecoder().decode(WeatherResponse.self, from: data)
-//    }
-    init(from dict: AnyDictionary) throws {
-        /*
-         It seems to better make type which easycodeable to the api response.
-         But - manual json parsing of request responses is protected from the future api response additional value updates.
-         */
-        guard let main = dict["main"] as? [String: Any],
-              let weather = dict["weather"] as? [String: Any],
-              let description = weather["description"] as? String,
-              let icon = weather["icon"] as? String,
-              let temp_min = main["temp_min"] as? Double,
-              let temp_max = main["temp_max"] as? Double
-        else {
-            throw CError(message: "invalid json: \(dict)")
-        }
-        self.description = description
-        self.icon = icon
-        self.temp_min = temp_min
-        self.temp_max = temp_max
+
+    func getDescription() -> String? {
+        let result = weather.first?.description
+        return result
     }
-     */
+    
+    func getIconKey() -> String? {
+        let result = weather.first?.icon
+        return result
+    }
+    
+    func getMinTemperature() -> Double {
+        let result = main.temp_min
+        return result
+    }
+    
+    func getMaxTemperature() -> Double {
+        let result = main.temp_max
+        return result
+    }
 }
 
 /*
+ https://api.openweathermap.org/data/2.5/weather?appid=0cd74bf29e43ef1ad6afd6861cc99eb2&lat=49.237952&lon=28.411444
+ sample response
  {
      "coord": {
          "lon": 28.4114,
