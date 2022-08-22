@@ -17,7 +17,7 @@ enum NavigationScreen {
     var destination: some View {
         switch self {
         case .weatherInCity:
-            return CityWeatherView()
+            return CityWeatherView(city: CityData()) //TODO !!!
         }
         //case ...
     }

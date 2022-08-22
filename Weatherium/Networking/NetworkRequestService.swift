@@ -18,7 +18,6 @@ struct NetworkRequestService: NetworkRequestServicePl {
     
     // MARK: Private Properties
     
-    private let apiUrl = URL(string: "https://api.openweathermap.org/data/2.5")!
     private let appId = "0cd74bf29e43ef1ad6afd6861cc99eb2"
     private let session: URLSession = .shared
     
@@ -31,12 +30,12 @@ struct NetworkRequestService: NetworkRequestServicePl {
     }
     
     func perform(endpoint: NetworkEnpoint) async throws -> (Data, URLResponse) {
-        let urlData = endpoint.urlData
-        let url = apiUrl.appendingPathComponent(urlData.path)
+        let url = try endpoint.createEndpointUrl()
         
         guard var urlComps = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             throw CError(message: "failed create URLComponents from url: \(url.absoluteString)")
         }
+        let urlData = endpoint.urlData
         var queryParams = urlData.params
         queryParams["appid"] = appId
         

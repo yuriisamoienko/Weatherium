@@ -26,8 +26,8 @@ struct MainView: View {
                 List {
                     ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
                         let city = viewModel.cities[index]
-                        let weather = weatherViewModel.citiesWeather[city] ?? .invalid
-                        let weatherIcon = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png")
+                        let weather: WeatherData = weatherViewModel.citiesWeather[city] ?? .invalid
+                        let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
                         
                         CityListCellView(
                             name: city.name,

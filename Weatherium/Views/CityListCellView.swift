@@ -93,7 +93,7 @@ struct CityListCellView_Previews: PreviewProvider {
             name: "NightCity",
             weatherDescription: "weather is great today. The sun is shinning brightly",
             temperature: WeatherTemperature(high: 24, low: 11),
-            iconUrl: URL(string: "https://openweathermap.org/img/wn/10d@2x.png")
+            iconUrl: try? NetworkEnpoint.weatherIcon(id: "10d").createEndpointUrl()
         )
         .frame(width: 500, height: 50, alignment: .leading)
         .previewLayout(PreviewLayout.sizeThatFits)

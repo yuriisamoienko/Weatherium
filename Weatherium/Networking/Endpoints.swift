@@ -21,6 +21,7 @@ enum NetworkEnpoint {
     
     case weather(latitude: Double, longitude: Double)
     case forecast(latitude: Double, longitude: Double)
+    case weatherIcon(id: String)
                   
     var urlData: EndpointUrlData {
         
@@ -40,19 +41,44 @@ enum NetworkEnpoint {
                 "lat": "\(latitude)",
                 "lon": "\(longitude)",
             ])
+        case .weatherIcon(let icon):
+            result = .init(
+                path: "\(icon)@2x.png"
+            )
         }
+        
         return result
     }
     
     var requestType: NetworkRequestType {
         let result: NetworkRequestType
         switch self {
-        case .weather( _, _):
-            result = .GET
-            
-        case .forecast(_, _):
+        default:
             result = .GET
         }
         return result
+    }
+    
+    var apiUrl: String {
+        let result: String
+        switch self {
+        case .weatherIcon(_):
+            result = "https://openweathermap.org/img/wn/"
+            
+        default:
+            result = "https://api.openweathermap.org/data/2.5"
+        }
+        return result
+    }
+    
+    func createEndpointUrl() throws -> URL {
+        let apiUrlStr = self.apiUrl
+        guard let apiUrl = URL(string: apiUrlStr) else {
+            throw CError(message: "failed create url from api: \(apiUrlStr)")
+        }
+                
+        let urlData = self.urlData
+        let url = apiUrl.appendingPathComponent(urlData.path)
+        return url
     }
 }
