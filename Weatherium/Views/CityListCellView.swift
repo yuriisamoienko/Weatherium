@@ -18,71 +18,71 @@ struct CityListCellView: View {
     
     var body: some View {
         GeometryReader { bodyGeometry in
-        HStack {
-            AsyncImage(
-                url: iconUrl,
-                content: { $0
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .background(Color.accentColor)
-                },
-                placeholder: {
-                    ProgressView()
-                        .tint(.accentColor)
-                        .scaleEffect(1.3)
+            HStack {
+                AsyncImage(
+                    url: iconUrl,
+                    content: { $0
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .background(Color.accentColor)
+                    },
+                    placeholder: {
+                        ProgressView()
+                            .tint(.accentColor)
+                            .scaleEffect(1.3)
+                    }
+                )
+                .frame(
+                    width: bodyGeometry.size.height,
+                    height: bodyGeometry.size.height
+                )
+                .cornerRadius(bodyGeometry.size.height/2)
+                
+                Spacer()
+                    .frame(width: 10)
+                
+                VStack(alignment: .leading) {
+                    Text(name)
+                        .frame(
+                            maxWidth: .infinity,
+                            alignment: .leading
+                        )
+                    Text(weatherDescription)
+                        .font(.callout)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-            )
+                
+                Spacer()
+                    .frame(width: 10)
+                
+                // allign ':' and numbers to right and vertically
+                Group {
+                    VStack(alignment: .trailing) {
+                        HStack {
+                            Text("H: ")
+                        }
+                        HStack {
+                            Text("L: ")
+                        }
+                    }
+                    VStack(alignment: .trailing) {
+                        HStack {
+                            Text("\(temperature.high)")
+                        }
+                        HStack {
+                            Text("\(temperature.low)")
+                        }
+                    }
+                }
+                .font(.subheadline)
+                .if(temperature.isInvalid(), content: { group in
+                    group.hidden()
+                })
+                    
+            }
             .frame(
-                width: bodyGeometry.size.height,
-                height: bodyGeometry.size.height
+                maxWidth: .infinity
             )
-            .cornerRadius(bodyGeometry.size.height/2)
-            
-            Spacer()
-                .frame(width: 10)
-            
-            VStack(alignment: .leading) {
-                Text(name)
-                    .frame(
-                        maxWidth: .infinity,
-                        alignment: .leading
-                    )
-                Text(weatherDescription)
-                    .font(.callout)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            
-            Spacer()
-                .frame(width: 10)
-            
-            // allign ':' and numbers to right and vertically
-            Group {
-                VStack(alignment: .trailing) {
-                    HStack {
-                        Text("H: ")
-                    }
-                    HStack {
-                        Text("L: ")
-                    }
-                }
-                VStack(alignment: .trailing) {
-                    HStack {
-                        Text("\(temperature.high)")
-                    }
-                    HStack {
-                        Text("\(temperature.low)")
-                    }
-                }
-            }
-            .font(.subheadline)
-            .if(temperature.isInvalid(), content: { group in
-                group.hidden()
-            })
-            
-        }
-        .frame(
-            maxWidth: .infinity
-        )
         }
     }
 }
