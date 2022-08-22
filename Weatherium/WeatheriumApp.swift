@@ -12,6 +12,9 @@ struct WeatheriumApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+//            CityWeatherView(
+//                city: CityData(id: 6173331, name: "Vancouver", country: nil)
+//                )
         }
     }
 }

@@ -11,8 +11,11 @@ struct MainView: View {
     
     @ObservedObject private var viewModel: CitiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
     @ObservedObject private var weatherViewModel: WeatherViewModel = WeatherViewModel() // warning fixed in swift 5.7
-    private let router = NavigationRouter() //TODO protocol and @Injected
+    
     @State private var showCityWeather = false
+    @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
+    
+    private let router = NavigationRouter() //TODO protocol and @Injected
     
     init() {
         
@@ -21,7 +24,9 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                router.navigationLink(to: .weatherInCity, isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
+                if let selectedCity = self.selectedCity {
+                    router.navigationLink(to: .weatherInCity(selectedCity), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
+                }
                 
                 List {
                     ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
@@ -40,15 +45,19 @@ struct MainView: View {
                         )
                         .frame(height: 50)
                         .onTapGesture {
+                            selectedCity = city
                             showCityWeather = true
                         }
                     }
                 }
-                .navigationTitle("Weather Application")
+                .navigationBarTitle("Weather Application", displayMode: .large)
                 .navigationBarColor(background: .accentColor)
+                .navigationBarColor(tint: .white)
+                .navigationBarColor(text: .white)
             }
             .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
         }
+//        .accentColor(.accentColor) //  Color(uiColor: .lightText))
     }
 }
 

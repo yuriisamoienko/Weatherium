@@ -21,6 +21,9 @@
 		5A3EA02B28B345900043BEC2 /* NetworkRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02A28B345900043BEC2 /* NetworkRequestService.swift */; };
 		5A3EA02D28B34C3A0043BEC2 /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */; };
 		5A3EA03028B36ACA0043BEC2 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02F28B36ACA0043BEC2 /* NavigationRouter.swift */; };
+		5A3EA03228B3C6490043BEC2 /* NavigationBarTintColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03128B3C6490043BEC2 /* NavigationBarTintColorModifier.swift */; };
+		5A3EA03428B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03328B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift */; };
+		5A3EA03628B3C8AD0043BEC2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03528B3C8AD0043BEC2 /* ColorExtension.swift */; };
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
 		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
@@ -50,6 +53,10 @@
 		5A3EA02A28B345900043BEC2 /* NetworkRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestService.swift; sourceTree = "<group>"; };
 		5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		5A3EA02F28B36ACA0043BEC2 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		5A3EA03128B3C6490043BEC2 /* NavigationBarTintColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTintColorModifier.swift; sourceTree = "<group>"; };
+		5A3EA03328B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTextColorModifier.swift; sourceTree = "<group>"; };
+		5A3EA03528B3C8AD0043BEC2 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		5A3EA03728B3C95F0043BEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5A58AEF428B0D36F00FDFF70 /* Weatherium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheriumApp.swift; sourceTree = "<group>"; };
 		5A58AEF928B0D36F00FDFF70 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -87,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				5A3EA01328B262730043BEC2 /* ViewExtension.swift */,
+				5A3EA03528B3C8AD0043BEC2 /* ColorExtension.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -95,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				5A3EA01C28B2A3520043BEC2 /* NavigationBarBackgroundColorModifier.swift */,
+				5A3EA03128B3C6490043BEC2 /* NavigationBarTintColorModifier.swift */,
+				5A3EA03328B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -147,6 +157,7 @@
 		5A58AEF628B0D36F00FDFF70 /* Weatherium */ = {
 			isa = PBXGroup;
 			children = (
+				5A3EA03728B3C95F0043BEC2 /* Info.plist */,
 				5A3EA02728B2A8BF0043BEC2 /* Networking */,
 				5A58AF0E28B0ED7400FDFF70 /* Extensions */,
 				5A58AF1328B0EE3000FDFF70 /* Helpers */,
@@ -311,6 +322,8 @@
 				5A3EA01628B27E660043BEC2 /* CityWeatherView.swift in Sources */,
 				5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */,
 				5A3EA02B28B345900043BEC2 /* NetworkRequestService.swift in Sources */,
+				5A3EA03628B3C8AD0043BEC2 /* ColorExtension.swift in Sources */,
+				5A3EA03228B3C6490043BEC2 /* NavigationBarTintColorModifier.swift in Sources */,
 				5A3EA00F28B1463B0043BEC2 /* URLRequestExtension.swift in Sources */,
 				5A3EA02D28B34C3A0043BEC2 /* ForecastData.swift in Sources */,
 				5A3EA01828B2800C0043BEC2 /* WeatherRequestResponse.swift in Sources */,
@@ -329,6 +342,7 @@
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,
 				5A3EA01128B2333C0043BEC2 /* SetExtension.swift in Sources */,
 				5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */,
+				5A3EA03428B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,11 +474,12 @@
 				DEVELOPMENT_TEAM = QN4ZAR6A43;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Weatherium/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -489,11 +504,12 @@
 				DEVELOPMENT_TEAM = QN4ZAR6A43;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Weatherium/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -11,13 +11,13 @@ import SwiftUI
 
 enum NavigationScreen {
     
-    case weatherInCity
+    case weatherInCity(CityData)
     //case ...
     
     var destination: some View {
         switch self {
-        case .weatherInCity:
-            return CityWeatherView(city: CityData()) //TODO !!!
+        case .weatherInCity(let city):
+            return CityWeatherView(city: city)
         }
         //case ...
     }
