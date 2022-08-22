@@ -20,7 +20,6 @@ import Combine
     private var subscriptions = Set<AnyCancellable>()
     private let networkRequestService: NetworkRequestServicePl = NetworkRequestService() //TODO @Injected
     
-    private var citiesCoordinate: [CityData: CLLocationCoordinate2D] = [:]
     
     // MARK: Public Functions
     
@@ -53,7 +52,7 @@ import Combine
     }
     
     private func getWeatherIn(city: CityData) async throws -> WeatherData {
-        guard let coordinate = await self.getCoordinateOf(city: city) else {
+        guard let coordinate = await citiesViewModel.getCoordinateOf(city: city) else {
             throw CError(message: "coordinates not found for city: \(city.name)")
         }
         
@@ -73,24 +72,5 @@ import Combine
             icon: weatherResponse.getIconKey() ?? ""
         )
         return result
-    }
-    
-    private func getCoordinateOf(city: CityData) async -> CLLocationCoordinate2D? {
-        var coordinate: CLLocationCoordinate2D? = citiesCoordinate[city]
-        if coordinate == nil {
-            var address = city.name
-            if let country = city.country {
-                address += ", \(country)"
-            }
-            address += " \(city.id)"
-            
-            do {
-                let placemarks: [CLPlacemark] = try await CLGeocoder().geocodeAddressString(address)
-                coordinate = placemarks.first(where: { $0.location != nil })?.location?.coordinate
-            } catch {
-                print("failed geocode address '\(address)' with error: \(error.localizedDescription)")
-            }
-        }
-        return coordinate
     }
 }

@@ -7,10 +7,19 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 @MainActor class CitiesViewModel: ObservableObject {
+    
+    // MARK: Public Properties
 
     @Published var cities: [CityData] = []
+    
+    // MARK: Private Properties
+    
+    private var citiesCoordinate: [CityData: CLLocationCoordinate2D] = [:]
+    
+    // MARK: Public Functions
     
     init() {
         Task {
@@ -21,6 +30,29 @@ import Combine
             }
         }
     }
+    
+    
+    func getCoordinateOf(city: CityData) async -> CLLocationCoordinate2D? {
+        var coordinate: CLLocationCoordinate2D? = citiesCoordinate[city]
+        if coordinate == nil {
+            var address = city.name
+            if let country = city.country {
+                address += ", \(country)"
+            }
+            address += " \(city.id)"
+            
+            do {
+                let placemarks: [CLPlacemark] = try await CLGeocoder().geocodeAddressString(address)
+                coordinate = placemarks.first(where: { $0.location != nil })?.location?.coordinate
+                citiesCoordinate[city] = coordinate
+            } catch {
+                print("failed geocode address '\(address)' with error: \(error.localizedDescription)")
+            }
+        }
+        return coordinate
+    }
+    
+    // MARK: Private Functions
     
     private func loadCities() async throws -> [CityData] {
         try await withCheckedThrowingContinuation { continuation in
