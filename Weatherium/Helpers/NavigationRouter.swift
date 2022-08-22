@@ -11,13 +11,13 @@ import SwiftUI
 
 enum NavigationScreen {
     
-    case weatherInCity(CityData)
+    case weatherInCity(CityData, WeatherViewModel) // TODO @Inject WeatherViewModel
     //case ...
     
     var destination: some View {
         switch self {
-        case .weatherInCity(let city):
-            return CityWeatherView(city: city)
+        case .weatherInCity(let city, let weatherViewModel):
+            return CityWeatherView(city: city, weatherViewModel: weatherViewModel)
         }
         //case ...
     }

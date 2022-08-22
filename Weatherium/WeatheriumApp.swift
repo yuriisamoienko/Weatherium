@@ -11,7 +11,11 @@ import SwiftUI
 struct WeatheriumApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            let cityViewModel = CitiesViewModel()  //TODO @Inject
+            MainView(
+                viewModel: cityViewModel, //TODO @Inject
+                weatherViewModel: WeatherViewModel(citiesViewModel: cityViewModel) //TODO @Inject
+            )
 //            CityWeatherView(
 //                city: CityData(id: 6173331, name: "Vancouver", country: nil)
 //                )

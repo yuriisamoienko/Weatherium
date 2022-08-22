@@ -13,17 +13,20 @@ import Combine
     
     @Published var citiesWeather: [CityData: WeatherData] = [:]
     @Published var citiesForecast: [CityData: ForecastData] = [:]
+    
+    var citiesViewModel: CitiesViewModel
 
     // MARK: Private Properties
     
-    private var citiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
+//    private var citiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
     private var subscriptions = Set<AnyCancellable>()
     private let networkRequestService: NetworkRequestServicePl = NetworkRequestService() //TODO @Injected
     
     
     // MARK: Public Functions
     
-    init() {
+    init(citiesViewModel: CitiesViewModel) {
+        self.citiesViewModel = citiesViewModel
         
         subscriptions = [
             citiesViewModel.$cities.sink(receiveValue: { (cities: [CityData]) in

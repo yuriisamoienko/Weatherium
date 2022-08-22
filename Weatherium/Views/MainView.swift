@@ -9,23 +9,25 @@ import SwiftUI
 
 struct MainView: View {
     
-    @ObservedObject private var viewModel: CitiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
-    @ObservedObject private var weatherViewModel: WeatherViewModel = WeatherViewModel() // warning fixed in swift 5.7
+    // MARK: Public Properties
+    
+    @ObservedObject var viewModel: CitiesViewModel
+    @ObservedObject var weatherViewModel: WeatherViewModel
+    
+    // MARK: Private Properties
     
     @State private var showCityWeather = false
     @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
     
-    private let router = NavigationRouter() //TODO protocol and @Injected
+    private let router = NavigationRouter() //TODO protocol and @Inject
     
-    init() {
-        
-    }
+    // MARK: Public Functions
     
     var body: some View {
         NavigationView {
             ZStack {
                 if let selectedCity = self.selectedCity {
-                    router.navigationLink(to: .weatherInCity(selectedCity), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
+                    router.navigationLink(to: .weatherInCity(selectedCity, weatherViewModel), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
                 }
                 
                 List {
@@ -57,12 +59,15 @@ struct MainView: View {
             }
             .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
         }
-//        .accentColor(.accentColor) //  Color(uiColor: .lightText))
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        let cityViewModel = CitiesViewModel()  //TODO @Inject
+        MainView(
+            viewModel: cityViewModel, //TODO @Inject
+            weatherViewModel: WeatherViewModel(citiesViewModel: cityViewModel) //TODO @Inject
+        )
     }
 }
