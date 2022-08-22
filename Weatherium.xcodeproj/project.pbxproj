@@ -19,6 +19,7 @@
 		5A3EA02528B2A7240043BEC2 /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02428B2A7240043BEC2 /* CityData.swift */; };
 		5A3EA02928B2A8E10043BEC2 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02828B2A8E10043BEC2 /* Endpoints.swift */; };
 		5A3EA02B28B345900043BEC2 /* NetworkRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02A28B345900043BEC2 /* NetworkRequestService.swift */; };
+		5A3EA02D28B34C3A0043BEC2 /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */; };
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
 		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		5A3EA02428B2A7240043BEC2 /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
 		5A3EA02828B2A8E10043BEC2 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		5A3EA02A28B345900043BEC2 /* NetworkRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestService.swift; sourceTree = "<group>"; };
+		5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		5A58AEF428B0D36F00FDFF70 /* Weatherium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheriumApp.swift; sourceTree = "<group>"; };
 		5A58AEF928B0D36F00FDFF70 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				5A3EA02228B2A7120043BEC2 /* WeatherData.swift */,
 				5A3EA02428B2A7240043BEC2 /* CityData.swift */,
+				5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */,
 				5A3EA02B28B345900043BEC2 /* NetworkRequestService.swift in Sources */,
 				5A3EA00F28B1463B0043BEC2 /* URLRequestExtension.swift in Sources */,
+				5A3EA02D28B34C3A0043BEC2 /* ForecastData.swift in Sources */,
 				5A3EA01828B2800C0043BEC2 /* WeatherRequestResponse.swift in Sources */,
 				5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */,
 				5A3EA01A28B280380043BEC2 /* ForecastRequestResponse.swift in Sources */,

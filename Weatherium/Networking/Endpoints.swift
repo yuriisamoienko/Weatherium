@@ -20,14 +20,23 @@ enum NetworkRequestType {
 enum NetworkEnpoint {
     
     case weather(latitude: Double, longitude: Double)
-//    case forecast(latitude: Double, longitude: Double)
+    case forecast(latitude: Double, longitude: Double)
                   
     var urlData: EndpointUrlData {
         
         let result: EndpointUrlData
         switch self {
         case .weather(let latitude, let longitude):
-            result = .init(path: "weather", params: [
+            result = .init(
+                path: "weather", params: [
+                "lat": "\(latitude)",
+                "lon": "\(longitude)",
+            ])
+            
+        case .forecast(let latitude, let longitude):
+            result = .init(
+                path: "forecast",
+                params: [
                 "lat": "\(latitude)",
                 "lon": "\(longitude)",
             ])
@@ -39,6 +48,9 @@ enum NetworkEnpoint {
         let result: NetworkRequestType
         switch self {
         case .weather( _, _):
+            result = .GET
+            
+        case .forecast(_, _):
             result = .GET
         }
         return result
