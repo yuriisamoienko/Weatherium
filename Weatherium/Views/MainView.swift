@@ -31,7 +31,7 @@ struct MainView: View {
                     router.navigationLink(to: .weatherInCity(selectedCity, weatherViewModel), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
                 }
                 
-                List {
+               List {
                     let filteredCities = viewModel.cities.filter {
                         searchText.isEmpty || $0.name.lowercased().contains(searchText.lowercased())
                     }
@@ -55,18 +55,21 @@ struct MainView: View {
                             showCityWeather = true
                         }
                     }
+                    
+                    Spacer(minLength: 0)
                 }
                 .navigationBarTitle("Weather Application", displayMode: .large)
                 .navigationBarColor(background: .accentColor)
                 .navigationBarColor(tint: .white)
                 .navigationBarColor(text: .white)
             }
-            .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
             .searchable(text: $searchText)
             .toolbar {
                 TemperatureSwitcherButton()
             }
+            
         }
+        .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
     }
 }
 
