@@ -29,6 +29,8 @@ Remarks:
 - Dark mode isn't supported yet
 - the warning is simulator related
 '{"msg":"#NullIsland Received a latitude or longitude from getLocationForBundleID that was exactly zero", "latIsZero":0, "lonIsZero":0, "location":'80 67 09 6F 01 00 00 00'}'
+- to hide warning "[boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metrics", run in terminal:
+xcrun simctl spawn booted log config --subsystem com.apple.network --category boringssl --mode "level:off"
 
 Thanks to:
 - icon creators https://www.flaticon.com/free-icons/weather
