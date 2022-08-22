@@ -16,7 +16,7 @@ import Combine
 
     // MARK: Private Properties
     
-    private var citiesViewModel = CitiesViewModel()
+    private var citiesViewModel = CitiesViewModel() // warning fixed in swift 5.7
     private var subscriptions = Set<AnyCancellable>()
     private let networkRequestService: NetworkRequestServicePl = NetworkRequestService() //TODO @Injected
     
@@ -28,13 +28,13 @@ import Combine
         subscriptions = [
             citiesViewModel.$cities.sink(receiveValue: { (cities: [CityData]) in
                 self.updateCitiesWeather(for: cities)
-                Task {
-                    guard let city = cities.first else {
-                        return
-                    }
-                    let test = try? await self.getForecastOf(city: city)
-                    print(test)
-                }
+//                Task {
+//                    guard let city = cities.first else {
+//                        return
+//                    }
+//                    let test = try? await self.getForecastOf(city: city)
+//                    print(test)
+//                }
             }),
         ]
        
