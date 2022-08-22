@@ -28,9 +28,41 @@ import Combine
         subscriptions = [
             citiesViewModel.$cities.sink(receiveValue: { (cities: [CityData]) in
                 self.updateCitiesWeather(for: cities)
+                Task {
+                    guard let city = cities.first else {
+                        return
+                    }
+                    let test = try? await self.getForecastOf(city: city)
+                    print(test)
+                }
             }),
         ]
-
+       
+    }
+    
+    func getForecastOf(city: CityData) async throws -> ForecastData {
+        guard let coordinate = await citiesViewModel.getCoordinateOf(city: city) else {
+            throw CError(message: "coordinates not found for city: \(city.name)")
+        }
+        
+        let forecastResponse: ForecastRequestResponse
+        forecastResponse = try await self.networkRequestService.getDataFrom(
+            endpoint: .forecast(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude
+            )
+        )
+        let result = ForecastData(list: forecastResponse.list.map { weather in
+            WeatherData(
+               weatherDescription: weather.getDescription() ?? "",
+               temperature: WeatherTemperature(
+                   high: Int(weather.getMaxTemperature()),
+                   low: Int(weather.getMinTemperature())
+               ),
+               icon: weather.getIconKey() ?? ""
+           )
+        })
+        return result
     }
     
     // MARK: Private Functions
