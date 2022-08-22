@@ -38,7 +38,7 @@ struct MainView: View {
                     ForEach(0 ..< filteredCities.count, id: \.self) { index in
                         let city = filteredCities[index]
                         let weather: WeatherData = weatherViewModel.citiesWeather[city] ?? .invalid
-                        let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
+                        let weatherIcon = weather.icon
                         
                         CityListCellView(
                             name: city.name,
@@ -47,7 +47,7 @@ struct MainView: View {
                                 high: weather.temperature.high,
                                 low: weather.temperature.low
                             ),
-                            iconUrl: weatherIcon
+                            iconId: weatherIcon
                         )
                         .frame(height: 50)
                         .onTapGesture {

@@ -29,7 +29,7 @@ struct CityWeatherView: View {
             VStack {
                 let weather =  weatherViewModel.citiesWeather[city] ?? WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
                 let forecast: ForecastData = weatherViewModel.citiesForecast[city] ?? .init(list: [WeatherData]())
-                let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
+                let weatherIcon = weather.icon
                 
                 CityListCellView(
                     name: weather.weatherDescription,
@@ -38,7 +38,7 @@ struct CityWeatherView: View {
                         high: weather.temperature.high,
                         low: weather.temperature.low
                     ),
-                    iconUrl: weatherIcon
+                    iconId: weatherIcon
                 )
                 .frame(height: 50)
                 
@@ -58,7 +58,7 @@ struct CityWeatherView: View {
                     // weather-time conditions of day above
                     ForEach(0 ..< dayForecast.list.count, id: \.self) { index in
                         let weather: WeatherData = dayForecast.list[index]
-                        let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
+                        let weatherIcon = weather.icon
                         let timestamp = weather.timestamp
                         
                         CityListCellView(
@@ -68,7 +68,7 @@ struct CityWeatherView: View {
                                 high: weather.temperature.high,
                                 low: weather.temperature.low
                             ),
-                            iconUrl: weatherIcon
+                            iconId: weatherIcon
                         )
                         .frame(height: 50)
                     }

@@ -14,7 +14,7 @@ struct CityListCellView: View {
     let name: String
     let weatherDescription: String
     let temperature: WeatherTemperature
-    let iconUrl: URL?
+    let iconId: String
     
     @EnvironmentObject private var appSettings: AppSettings
     
@@ -22,7 +22,7 @@ struct CityListCellView: View {
         GeometryReader { bodyGeometry in
             HStack {
                 AsyncImage(
-                    url: iconUrl,
+                    url: getIconUrl(),
                     content: { $0
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -91,6 +91,13 @@ struct CityListCellView: View {
             )
         }
     }
+    
+    // MARK: Private Functions
+    
+    private func getIconUrl() -> URL? {
+        let scaleFactor = UIScreen.main.scale
+        return try? NetworkEnpoint.weatherIcon(id: iconId, scaleFactor: scaleFactor).createEndpointUrl()
+    }
 }
 
 struct CityListCellView_Previews: PreviewProvider {
@@ -99,7 +106,7 @@ struct CityListCellView_Previews: PreviewProvider {
             name: "NightCity",
             weatherDescription: "weather is great today. The sun is shinning brightly",
             temperature: WeatherTemperature(high: 24, low: 11),
-            iconUrl: try? NetworkEnpoint.weatherIcon(id: "10d").createEndpointUrl()
+            iconId: "10d"
         )
         .frame(width: 500, height: 50, alignment: .leading)
         .previewLayout(PreviewLayout.sizeThatFits)

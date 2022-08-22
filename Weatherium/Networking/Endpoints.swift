@@ -21,7 +21,7 @@ enum NetworkEnpoint {
     
     case weather(latitude: Double, longitude: Double)
     case forecast(latitude: Double, longitude: Double)
-    case weatherIcon(id: String)
+    case weatherIcon(id: String, scaleFactor: Double)
                   
     var urlData: EndpointUrlData {
         
@@ -41,9 +41,9 @@ enum NetworkEnpoint {
                 "lat": "\(latitude)",
                 "lon": "\(longitude)",
             ])
-        case .weatherIcon(let icon):
+        case .weatherIcon(let icon, let scaleFactor):
             result = .init(
-                path: "\(icon)@2x.png"
+                path: "\(icon)@\(Int(scaleFactor))x.png"
             )
         }
         
@@ -62,7 +62,7 @@ enum NetworkEnpoint {
     var apiUrl: String {
         let result: String
         switch self {
-        case .weatherIcon(_):
+        case .weatherIcon(_, _):
             result = "https://openweathermap.org/img/wn/"
             
         default:
