@@ -32,6 +32,7 @@
 		5A3EA04328B3FA780043BEC2 /* MeasurementFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04228B3FA780043BEC2 /* MeasurementFormatterExtension.swift */; };
 		5A3EA04628B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04528B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift */; };
 		5A3EA04828B401E60043BEC2 /* UnitTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04728B401E60043BEC2 /* UnitTemperature.swift */; };
+		5A3EA04B28B409750043BEC2 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5A3EA04A28B409750043BEC2 /* CachedAsyncImage */; };
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
 		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3EA04B28B409750043BEC2 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +297,9 @@
 			dependencies = (
 			);
 			name = Weatherium;
+			packageProductDependencies = (
+				5A3EA04A28B409750043BEC2 /* CachedAsyncImage */,
+			);
 			productName = Weatherium;
 			productReference = 5A58AEF428B0D36F00FDFF70 /* Weatherium.app */;
 			productType = "com.apple.product-type.application";
@@ -323,6 +328,9 @@
 				Base,
 			);
 			mainGroup = 5A58AEEB28B0D36F00FDFF70;
+			packageReferences = (
+				5A3EA04928B409750043BEC2 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = 5A58AEF528B0D36F00FDFF70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -585,6 +593,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A3EA04928B409750043BEC2 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A3EA04A28B409750043BEC2 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A3EA04928B409750043BEC2 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A58AEEC28B0D36F00FDFF70 /* Project object */;
 }

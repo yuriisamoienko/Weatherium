@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CityListCellView: View {
     
@@ -21,7 +22,7 @@ struct CityListCellView: View {
     var body: some View {
         GeometryReader { bodyGeometry in
             HStack {
-                AsyncImage(
+                CachedAsyncImage(
                     url: getIconUrl(),
                     content: { $0
                         .resizable()

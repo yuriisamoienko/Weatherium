@@ -16,9 +16,17 @@ The single city page :
 - Description of the weather 
 - Max and Min temperatures
 
+Also implemented:
+- Caching - cache locally (in memory) the responses from the api and use them when applicable instead of making a new call to the api
+- Fahrenheit <-> Celsius - right navbar button to toggle between these termerature units
+- icons caching with CachedAsyncImage
+
 Remarks:
 - Swift Concurrecny and Combine are used to have some Demo with the technologies
 - 'country: Philippines' was added to 'Manila' city, because Geocoder couldn't resolve original value without specific country
+- NavigationRouter curently is as abstract as possible
+- Dark mode isn't supported yet
 
 Thanks to:
 - icon creators https://www.flaticon.com/free-icons/weather
+- lorenzofiamingo https://github.com/lorenzofiamingo/swiftui-cached-async-image
