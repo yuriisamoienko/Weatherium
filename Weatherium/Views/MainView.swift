@@ -25,7 +25,7 @@ struct MainView: View {
     // MARK: Public Functions
     
     var body: some View {
-        NavigationView {            
+        NavigationView {
             ZStack {
                 if let selectedCity = self.selectedCity {
                     router.navigationLink(to: .weatherInCity(selectedCity, weatherViewModel), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
@@ -63,6 +63,9 @@ struct MainView: View {
             }
             .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
             .searchable(text: $searchText)
+            .toolbar {
+                TemperatureSwitcherButton()
+            }
         }
     }
 }

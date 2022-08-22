@@ -9,7 +9,6 @@ import Foundation
 
 extension MeasurementFormatter {
  
-    
     static func convert(temperature: Int, from inputTempType: UnitTemperature, to outputTempType: UnitTemperature) -> String {
         return convert(temperature: Double(temperature), from: inputTempType, to: outputTempType)
     }

@@ -16,6 +16,8 @@ struct CityListCellView: View {
     let temperature: WeatherTemperature
     let iconUrl: URL?
     
+    @EnvironmentObject private var appSettings: AppSettings
+    
     var body: some View {
         GeometryReader { bodyGeometry in
             HStack {
@@ -66,8 +68,9 @@ struct CityListCellView: View {
                         }
                     }
                     VStack(alignment: .trailing) {
-                        let highTemperature = MeasurementFormatter.convert(temperature: temperature.high, from: .kelvin, to: .celsius)
-                        let lowTemperature = MeasurementFormatter.convert(temperature: temperature.low, from: .kelvin, to: .celsius)
+                        let unitTemperature = appSettings.displayedTemperatureUnit.unit
+                        let highTemperature = MeasurementFormatter.convert(temperature: temperature.high, from: .kelvin, to: unitTemperature)
+                        let lowTemperature = MeasurementFormatter.convert(temperature: temperature.low, from: .kelvin, to: unitTemperature)
                         
                         HStack {
                             Text("\(highTemperature)")

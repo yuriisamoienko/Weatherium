@@ -30,6 +30,8 @@
 		5A3EA03F28B3E8830043BEC2 /* TimeZoneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03E28B3E8830043BEC2 /* TimeZoneExtension.swift */; };
 		5A3EA04128B3ED290043BEC2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04028B3ED290043BEC2 /* StringExtension.swift */; };
 		5A3EA04328B3FA780043BEC2 /* MeasurementFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04228B3FA780043BEC2 /* MeasurementFormatterExtension.swift */; };
+		5A3EA04628B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04528B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift */; };
+		5A3EA04828B401E60043BEC2 /* UnitTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04728B401E60043BEC2 /* UnitTemperature.swift */; };
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
 		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
@@ -69,6 +71,8 @@
 		5A3EA03E28B3E8830043BEC2 /* TimeZoneExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneExtension.swift; sourceTree = "<group>"; };
 		5A3EA04028B3ED290043BEC2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5A3EA04228B3FA780043BEC2 /* MeasurementFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementFormatterExtension.swift; sourceTree = "<group>"; };
+		5A3EA04528B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureSwitcherButton.swift; sourceTree = "<group>"; };
+		5A3EA04728B401E60043BEC2 /* UnitTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTemperature.swift; sourceTree = "<group>"; };
 		5A58AEF428B0D36F00FDFF70 /* Weatherium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheriumApp.swift; sourceTree = "<group>"; };
 		5A58AEF928B0D36F00FDFF70 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,14 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		5A3EA04428B3FF580043BEC2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5A3EA04528B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5A58AEEB28B0D36F00FDFF70 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +206,7 @@
 		5A58AF0528B0E2C400FDFF70 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A3EA04428B3FF580043BEC2 /* Components */,
 				5A3EA01B28B2A3400043BEC2 /* ViewModifiers */,
 				5A58AEF928B0D36F00FDFF70 /* MainView.swift */,
 				5A58AF0728B0E34900FDFF70 /* CityListCellView.swift */,
@@ -234,6 +247,7 @@
 				5A3EA03E28B3E8830043BEC2 /* TimeZoneExtension.swift */,
 				5A3EA04028B3ED290043BEC2 /* StringExtension.swift */,
 				5A3EA04228B3FA780043BEC2 /* MeasurementFormatterExtension.swift */,
+				5A3EA04728B401E60043BEC2 /* UnitTemperature.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,8 +361,10 @@
 				5A3EA00F28B1463B0043BEC2 /* URLRequestExtension.swift in Sources */,
 				5A3EA02D28B34C3A0043BEC2 /* ForecastData.swift in Sources */,
 				5A3EA01828B2800C0043BEC2 /* WeatherRequestResponse.swift in Sources */,
+				5A3EA04828B401E60043BEC2 /* UnitTemperature.swift in Sources */,
 				5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */,
 				5A3EA01A28B280380043BEC2 /* ForecastRequestResponse.swift in Sources */,
+				5A3EA04628B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift in Sources */,
 				5A3EA03D28B3E4170043BEC2 /* ArrayExtension.swift in Sources */,
 				5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */,
 				5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */,

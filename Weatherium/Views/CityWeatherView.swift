@@ -80,7 +80,9 @@ struct CityWeatherView: View {
         .onAppear {
             weatherViewModel.updateForecastOf(city: city)
         }
-        
+        .toolbar {
+            TemperatureSwitcherButton()
+        }
     }
     
     private func get5DaysForecast(from forecast: ForecastData) -> [DayForecast] {

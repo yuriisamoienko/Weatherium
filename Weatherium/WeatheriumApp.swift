@@ -19,6 +19,7 @@ struct WeatheriumApp: App {
 //            CityWeatherView(
 //                city: CityData(id: 6173331, name: "Vancouver", country: nil)
 //                )
+            .environmentObject(AppSettings())
         }
     }
 }
