@@ -21,7 +21,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                router.navigationLink(to: .citiesWeather, isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
+                router.navigationLink(to: .weatherInCity, isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
                 
                 List {
                     ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
