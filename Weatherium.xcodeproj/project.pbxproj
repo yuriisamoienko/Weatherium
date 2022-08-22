@@ -25,6 +25,10 @@
 		5A3EA03428B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03328B3C78F0043BEC2 /* NavigationBarTextColorModifier.swift */; };
 		5A3EA03628B3C8AD0043BEC2 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03528B3C8AD0043BEC2 /* ColorExtension.swift */; };
 		5A3EA03928B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03828B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift */; };
+		5A3EA03B28B3D8A70043BEC2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03A28B3D8A70043BEC2 /* DateExtension.swift */; };
+		5A3EA03D28B3E4170043BEC2 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03C28B3E4170043BEC2 /* ArrayExtension.swift */; };
+		5A3EA03F28B3E8830043BEC2 /* TimeZoneExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA03E28B3E8830043BEC2 /* TimeZoneExtension.swift */; };
+		5A3EA04128B3ED290043BEC2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3EA04028B3ED290043BEC2 /* StringExtension.swift */; };
 		5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */; };
 		5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AEF928B0D36F00FDFF70 /* MainView.swift */; };
 		5A58AEFC28B0D37300FDFF70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A58AEFB28B0D37300FDFF70 /* Assets.xcassets */; };
@@ -59,6 +63,10 @@
 		5A3EA03528B3C8AD0043BEC2 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		5A3EA03728B3C95F0043BEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5A3EA03828B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesInjectorProtocol.swift; sourceTree = "<group>"; };
+		5A3EA03A28B3D8A70043BEC2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		5A3EA03C28B3E4170043BEC2 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		5A3EA03E28B3E8830043BEC2 /* TimeZoneExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneExtension.swift; sourceTree = "<group>"; };
+		5A3EA04028B3ED290043BEC2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5A58AEF428B0D36F00FDFF70 /* Weatherium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatheriumApp.swift; sourceTree = "<group>"; };
 		5A58AEF928B0D36F00FDFF70 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -219,6 +227,10 @@
 				5A3EA00828B12C210043BEC2 /* CollectionExtension.swift */,
 				5A3EA00E28B1463B0043BEC2 /* URLRequestExtension.swift */,
 				5A3EA01028B2333C0043BEC2 /* SetExtension.swift */,
+				5A3EA03A28B3D8A70043BEC2 /* DateExtension.swift */,
+				5A3EA03C28B3E4170043BEC2 /* ArrayExtension.swift */,
+				5A3EA03E28B3E8830043BEC2 /* TimeZoneExtension.swift */,
+				5A3EA04028B3ED290043BEC2 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,6 +335,7 @@
 			files = (
 				5A3EA03028B36ACA0043BEC2 /* NavigationRouter.swift in Sources */,
 				5A3EA01628B27E660043BEC2 /* CityWeatherView.swift in Sources */,
+				5A3EA04128B3ED290043BEC2 /* StringExtension.swift in Sources */,
 				5A58AEFA28B0D36F00FDFF70 /* MainView.swift in Sources */,
 				5A3EA02B28B345900043BEC2 /* NetworkRequestService.swift in Sources */,
 				5A3EA03628B3C8AD0043BEC2 /* ColorExtension.swift in Sources */,
@@ -332,17 +345,20 @@
 				5A3EA01828B2800C0043BEC2 /* WeatherRequestResponse.swift in Sources */,
 				5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */,
 				5A3EA01A28B280380043BEC2 /* ForecastRequestResponse.swift in Sources */,
+				5A3EA03D28B3E4170043BEC2 /* ArrayExtension.swift in Sources */,
 				5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */,
 				5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */,
 				5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */,
 				5A3EA01428B262730043BEC2 /* ViewExtension.swift in Sources */,
 				5A3EA00928B12C210043BEC2 /* CollectionExtension.swift in Sources */,
+				5A3EA03F28B3E8830043BEC2 /* TimeZoneExtension.swift in Sources */,
 				5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */,
 				5A3EA02528B2A7240043BEC2 /* CityData.swift in Sources */,
 				5A3EA01D28B2A3520043BEC2 /* NavigationBarBackgroundColorModifier.swift in Sources */,
 				5A3EA02928B2A8E10043BEC2 /* Endpoints.swift in Sources */,
 				5A3EA02328B2A7120043BEC2 /* WeatherData.swift in Sources */,
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,
+				5A3EA03B28B3D8A70043BEC2 /* DateExtension.swift in Sources */,
 				5A3EA03928B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift in Sources */,
 				5A3EA01128B2333C0043BEC2 /* SetExtension.swift in Sources */,
 				5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */,

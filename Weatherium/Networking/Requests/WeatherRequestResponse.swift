@@ -28,10 +28,12 @@ struct WeatherRequestResponse: EasyCodable {
     }
     let weather: [WeatherInfo]
     let main: MainInfo
+    let dt: Double
     
     init() {
         weather = []
         main = MainInfo()
+        dt = -1
     }
 
     func getDescription() -> String? {
@@ -52,6 +54,10 @@ struct WeatherRequestResponse: EasyCodable {
     func getMaxTemperature() -> Double {
         let result = main.temp_max
         return result
+    }
+    
+    func getTimestamp() -> TimeInterval {
+        return dt
     }
 }
 

@@ -11,8 +11,9 @@ struct WeatherData {
     let weatherDescription: String
     let temperature: WeatherTemperature
     let icon: String
+    let timestamp: Double
     
-    static let invalid = WeatherData(weatherDescription: "", temperature: .invalid, icon: "")
+    static let invalid = WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
 }
 
 struct WeatherTemperature: Equatable {

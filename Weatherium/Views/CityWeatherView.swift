@@ -9,38 +9,28 @@ import SwiftUI
 
 struct CityWeatherView: View {
     
-    let city: CityData
+    // MARK: Private Properties
     
-    @ObservedObject var weatherViewModel: WeatherViewModel
+    @ObservedObject private var weatherViewModel: WeatherViewModel
     
-    private var weather: WeatherData = WeatherData(weatherDescription: "", temperature: .invalid, icon: "")
+    private let city: CityData
+    private var weather: WeatherData = WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
     private var forecast: ForecastData = .init(list: [WeatherData]())
     
-//    @ObservedObject private var weatherViewModel: WeatherViewModel = WeatherViewModel() // warning fixed in swift 5.7
+    // MARK: Public Functions
     
     init(city: CityData, weatherViewModel: WeatherViewModel ) {
         self.city = city
         self.weatherViewModel = weatherViewModel
-//        Task {
-//            guard let weather = await self.weatherViewModel.citiesWeather[city] else {
-//                return
-//            }
-//            self.weather = weather
-//        }
     }
     
     var body: some View {
+        List {
             VStack {
-                let weather =  weatherViewModel.citiesWeather[city] ?? WeatherData(weatherDescription: "", temperature: .invalid, icon: "")
+                let weather =  weatherViewModel.citiesWeather[city] ?? WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
                 let forecast: ForecastData = weatherViewModel.citiesForecast[city] ?? .init(list: [WeatherData]())
                 let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
                 
-//                Text(city.name)
-//                .font(.title)
-//                    .frame(
-//                        maxWidth: .infinity,
-//                        alignment: .center
-//                    )
                 HStack {
                     GeometryReader { bodyGeometry in
                         AsyncImage(
@@ -66,8 +56,7 @@ struct CityWeatherView: View {
                     Spacer(minLength: 10)
                     
                     Text(weather.weatherDescription)
-                        .font(.body)
-                        .fixedSize(horizontal: false, vertical: true)
+                        .font(.headline)
                     
                     Spacer(minLength: 10)
                     
@@ -93,19 +82,81 @@ struct CityWeatherView: View {
                     .font(.subheadline)
                     .if(weather.temperature.isInvalid(), content: { group in
                         group.hidden()
-                })
+                    })
                 }
-//                VStack(alignment: .center) {
-//                }
                 
-                Spacer(minLength: 0)
-    
+                Spacer(minLength: 30)
+                
+                
+                
+                let next5daysForecast = get5DaysForecast(from: forecast)
+                
+                
+                ForEach(0 ..< next5daysForecast.count, id: \.self) { dayIndex in
+                    let dayForecast: DayForecast = next5daysForecast[dayIndex]
+                    
+                    Text(dayForecast.day.capitalizingFirstLetter())
+                        .font(.title3)
+                    
+                    // weather-time conditions of day above
+                    ForEach(0 ..< dayForecast.list.count, id: \.self) { index in
+                        let weather: WeatherData = dayForecast.list[index]
+                        let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
+                        let timestamp = weather.timestamp
+                        
+                        CityListCellView(
+                            name: Date(timeIntervalSince1970: Double(timestamp)).toString(format: "HH:mm"),
+                            weatherDescription: weather.weatherDescription,
+                            temperature: WeatherTemperature(
+                                high: weather.temperature.high,
+                                low: weather.temperature.low
+                            ),
+                            iconUrl: weatherIcon
+                        )
+                        .frame(height: 50)
+                    }
+                }
             }
             .padding(10)
-            .navigationBarTitle(city.name, displayMode: .large)
-            
+        }
+        .navigationBarTitle(city.name, displayMode: .large)
+        .onAppear {
+            weatherViewModel.updateForecastOf(city: city)
+        }
+        
     }
     
+    private func get5DaysForecast(from forecast: ForecastData) -> [DayForecast] {
+        var result: [DayForecast] = []
+        let forecastList = forecast.list
+        
+        if forecastList.isEmpty == false {
+            let today = Date()
+            
+            let sixthDayLocalMidnightTimestamp = today.byAdding(days: 6).withLocalTimeZone().timeIntervalSince1970
+            let dictLocaldayWeathers = forecastList.reduce(into: [String: [WeatherData]]()) { partialResult, weather in
+                let weatherTimestamp = weather.timestamp
+                if sixthDayLocalMidnightTimestamp <= weatherTimestamp {
+                    return // we don't need 6th day and further
+                }
+                let localDay = Date(timeIntervalSince1970: weatherTimestamp).toString(format: "EEEE")
+                var weathersOfLocalDay = partialResult[localDay] ?? [WeatherData]()
+                weathersOfLocalDay.append(weather)
+                partialResult[localDay] = weathersOfLocalDay
+            }
+            
+            let dayNamesOrderedList = Array(0..<5).map { today.byAdding(days: $0).toString(format: "EEEE") }
+            
+            for dayName in dayNamesOrderedList {
+                guard let weathersOfLocalDay = dictLocaldayWeathers[dayName] else {
+                    break // out of weather data
+                }
+                result.append(DayForecast(day: dayName, list: weathersOfLocalDay))
+            }
+            
+        }
+        return result
+    }
 }
 
 struct CityWeatherView_Previews: PreviewProvider {
@@ -115,4 +166,9 @@ struct CityWeatherView_Previews: PreviewProvider {
             weatherViewModel: WeatherViewModel(citiesViewModel: CitiesViewModel()) //TODO @Inject
         )
     }
+}
+
+fileprivate struct DayForecast {
+    let day: String
+    let list: [WeatherData]
 }

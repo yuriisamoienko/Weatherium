@@ -43,7 +43,15 @@ import Combine
        
     }
     
-    func getForecastOf(city: CityData) async throws -> ForecastData {
+    func updateForecastOf(city: CityData) {
+        Task {
+            self.citiesForecast[city] = try? await getForecastOf(city: city)
+        }
+    }
+    
+    // MARK: Private Functions
+    
+    private func getForecastOf(city: CityData) async throws -> ForecastData {
         guard let coordinate = await citiesViewModel.getCoordinateOf(city: city) else {
             throw CError(message: "coordinates not found for city: \(city.name)")
         }
@@ -55,20 +63,21 @@ import Combine
                 longitude: coordinate.longitude
             )
         )
-        let result = ForecastData(list: forecastResponse.list.map { weather in
-            WeatherData(
-               weatherDescription: weather.getDescription() ?? "",
-               temperature: WeatherTemperature(
-                   high: Int(weather.getMaxTemperature()),
-                   low: Int(weather.getMinTemperature())
-               ),
-               icon: weather.getIconKey() ?? ""
-           )
-        })
+        let result = ForecastData(
+            list: forecastResponse.list.map { weather in
+                WeatherData(
+                    weatherDescription: weather.getDescription() ?? "",
+                    temperature: WeatherTemperature(
+                        high: Int(weather.getMaxTemperature()),
+                        low: Int(weather.getMinTemperature())
+                    ),
+                    icon: weather.getIconKey() ?? "",
+                    timestamp: weather.getTimestamp()
+                )
+            }
+        )
         return result
     }
-    
-    // MARK: Private Functions
     
     private func updateCitiesWeather(for cities: [CityData]) {
         for city in cities {
@@ -104,7 +113,8 @@ import Combine
                 high: Int(weatherResponse.getMaxTemperature()),
                 low: Int(weatherResponse.getMinTemperature())
             ),
-            icon: weatherResponse.getIconKey() ?? ""
+            icon: weatherResponse.getIconKey() ?? "",
+            timestamp: weatherResponse.getTimestamp()
         )
         return result
     }
