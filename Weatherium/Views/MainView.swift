@@ -18,21 +18,25 @@ struct MainView: View {
     
     @State private var showCityWeather = false
     @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
+    @State private var searchText = ""
     
     private let router = NavigationRouter() //TODO protocol and @Inject
     
     // MARK: Public Functions
     
     var body: some View {
-        NavigationView {
+        NavigationView {            
             ZStack {
                 if let selectedCity = self.selectedCity {
                     router.navigationLink(to: .weatherInCity(selectedCity, weatherViewModel), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
                 }
                 
                 List {
-                    ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
-                        let city = viewModel.cities[index]
+                    let filteredCities = viewModel.cities.filter {
+                        searchText.isEmpty || $0.name.lowercased().contains(searchText.lowercased())
+                    }
+                    ForEach(0 ..< filteredCities.count, id: \.self) { index in
+                        let city = filteredCities[index]
                         let weather: WeatherData = weatherViewModel.citiesWeather[city] ?? .invalid
                         let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
                         
@@ -58,6 +62,7 @@ struct MainView: View {
                 .navigationBarColor(text: .white)
             }
             .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
+            .searchable(text: $searchText)
         }
     }
 }
