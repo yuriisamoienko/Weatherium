@@ -65,6 +65,7 @@ struct NetworkRequestService: NetworkRequestServicePl {
             //TODO
             break
         }
+        request.cachePolicy = endpoint.cachePolicy
         
         let result = try await URLSession.shared.data(for: request)
         return result

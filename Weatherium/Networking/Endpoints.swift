@@ -71,6 +71,15 @@ enum NetworkEnpoint {
         return result
     }
     
+    var cachePolicy: NSURLRequest.CachePolicy {
+        let result: NSURLRequest.CachePolicy
+        switch self {
+        default:
+            result = .returnCacheDataElseLoad
+        }
+        return result
+    }
+    
     func createEndpointUrl() throws -> URL {
         let apiUrlStr = self.apiUrl
         guard let apiUrl = URL(string: apiUrlStr) else {
