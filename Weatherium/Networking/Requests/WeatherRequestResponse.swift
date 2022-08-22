@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherResponse: EasyCodable {
+struct WeatherRequestResponse: EasyCodable {
     struct WeatherInfo: EasyCodable {
         let description: String
         let icon: String

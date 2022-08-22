@@ -20,8 +20,7 @@ extension Dictionary {
     
     //MOD
     init(fromJsonData data: Data) throws {
-        guard let value = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Self
-        else {
+        guard let value = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? Self else {
             throw CError(message: "failed convert data json to dictionary")
         }
         self.init()
@@ -52,8 +51,7 @@ extension Dictionary where Key == String {
     mutating func replaceExistingValues(from dict: [String: Value]) throws {
         let keys = Array(self.keys)
         
-        guard Set(dict.keys).contains(allFrom: keys) == true
-        else {
+        guard Set(dict.keys).contains(allFrom: keys) == true else {
             let error = "keys (\(keys)) are missed in dictionary (\(dict.toJsonString() ?? "")"
             throw CError(message: error)
         }

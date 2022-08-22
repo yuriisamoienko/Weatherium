@@ -93,8 +93,7 @@ extension EasyCodable {
             try self.init(data: data, isReflectionPerformed: true) //because custom reflection will be done here in case of failure
         } catch {
             if isReflectionPerformed == false {
-                guard let stringDict = dict as? [String: Any]
-                else {
+                guard let stringDict = dict as? [String: Any] else {
                     throw CError(message: "input dictionary isn't [String: Any]")
                 }
                 do {
