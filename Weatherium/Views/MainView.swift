@@ -31,7 +31,7 @@ struct MainView: View {
                     router.navigationLink(to: .weatherInCity(selectedCity, weatherViewModel), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
                 }
                 
-               List {
+                List {
                     let filteredCities = viewModel.cities.filter {
                         searchText.isEmpty || $0.name.lowercased().contains(searchText.lowercased())
                     }
