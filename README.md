@@ -25,6 +25,7 @@ Remarks:
 - Swift Concurrecny and Combine are used to have some Demo with the technologies
 - 'country: Philippines' was added to 'Manila' city, because Geocoder couldn't resolve original value without specific country
 - NavigationRouter curently is as abstract as possible
+- EasyCodable allows easily encode & decode (serialize & deserialize) class & struct instances. It allows create instances from redundant jsons (which constains more keys then needed) !!! It's very useful when parsing network request responses
 - Dark mode isn't supported yet
 - the warning is simulator related
 '{"msg":"#NullIsland Received a latitude or longitude from getLocationForBundleID that was exactly zero", "latIsZero":0, "lonIsZero":0, "location":'80 67 09 6F 01 00 00 00'}'
