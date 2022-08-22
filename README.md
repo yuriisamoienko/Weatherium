@@ -26,6 +26,8 @@ Remarks:
 - 'country: Philippines' was added to 'Manila' city, because Geocoder couldn't resolve original value without specific country
 - NavigationRouter curently is as abstract as possible
 - Dark mode isn't supported yet
+- the warning is simulator related
+'{"msg":"#NullIsland Received a latitude or longitude from getLocationForBundleID that was exactly zero", "latIsZero":0, "lonIsZero":0, "location":'80 67 09 6F 01 00 00 00'}'
 
 Thanks to:
 - icon creators https://www.flaticon.com/free-icons/weather
