@@ -66,11 +66,14 @@ struct CityListCellView: View {
                         }
                     }
                     VStack(alignment: .trailing) {
+                        let highTemperature = MeasurementFormatter.convert(temperature: temperature.high, from: .kelvin, to: .celsius)
+                        let lowTemperature = MeasurementFormatter.convert(temperature: temperature.low, from: .kelvin, to: .celsius)
+                        
                         HStack {
-                            Text("\(temperature.high)")
+                            Text("\(highTemperature)")
                         }
                         HStack {
-                            Text("\(temperature.low)")
+                            Text("\(lowTemperature)")
                         }
                     }
                 }

@@ -31,59 +31,16 @@ struct CityWeatherView: View {
                 let forecast: ForecastData = weatherViewModel.citiesForecast[city] ?? .init(list: [WeatherData]())
                 let weatherIcon = try? NetworkEnpoint.weatherIcon(id: weather.icon).createEndpointUrl()
                 
-                HStack {
-                    GeometryReader { bodyGeometry in
-                        AsyncImage(
-                            url: weatherIcon,
-                            content: { $0
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .background(Color.accentColor)
-                            },
-                            placeholder: {
-                                ProgressView()
-                                    .tint(.accentColor)
-                                    .scaleEffect(1.3)
-                            }
-                        )
-                        .cornerRadius(bodyGeometry.size.height/2)
-                    }
-                    .frame(
-                        width: 50,
-                        height: 50
-                    )
-                    
-                    Spacer(minLength: 10)
-                    
-                    Text(weather.weatherDescription)
-                        .font(.headline)
-                    
-                    Spacer(minLength: 10)
-                    
-                    // allign ':' and numbers to right and vertically
-                    Group {
-                        VStack(alignment: .trailing) {
-                            HStack {
-                                Text("H: ")
-                            }
-                            HStack {
-                                Text("L: ")
-                            }
-                        }
-                        VStack(alignment: .trailing) {
-                            HStack {
-                                Text("\(weather.temperature.high)")
-                            }
-                            HStack {
-                                Text("\(weather.temperature.low)")
-                            }
-                        }
-                    }
-                    .font(.subheadline)
-                    .if(weather.temperature.isInvalid(), content: { group in
-                        group.hidden()
-                    })
-                }
+                CityListCellView(
+                    name: weather.weatherDescription,
+                    weatherDescription: "",
+                    temperature: WeatherTemperature(
+                        high: weather.temperature.high,
+                        low: weather.temperature.low
+                    ),
+                    iconUrl: weatherIcon
+                )
+                .frame(height: 50)
                 
                 Spacer(minLength: 30)
                 
@@ -149,7 +106,7 @@ struct CityWeatherView: View {
             
             for dayName in dayNamesOrderedList {
                 guard let weathersOfLocalDay = dictLocaldayWeathers[dayName] else {
-                    break // out of weather data
+                    continue
                 }
                 result.append(DayForecast(day: dayName, list: weathersOfLocalDay))
             }
