@@ -34,8 +34,6 @@ struct NavigationRouter {
         return NavigationLink(destination: screen.destination, isActive: isActive, label: {
             EmptyView()
         })
-        .hidden()
-        .frame(width: 0, height: 0)
     }
     
 }

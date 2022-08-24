@@ -50,6 +50,7 @@ struct MainView: View {
                             iconId: weatherIcon
                         )
                         .frame(height: 50)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             selectedCity = city
                             showCityWeather = true
