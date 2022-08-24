@@ -10,6 +10,8 @@ import SwiftUI
 
 extension View {
     
+    // MARK: Public Functions
+    
    @ViewBuilder
    func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
         if conditional {

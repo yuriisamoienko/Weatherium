@@ -8,7 +8,12 @@
 import Foundation
 
 struct ForecastRequestResponse: EasyCodable {
+    
+    // MARK: Public Properties
+    
     let list: [WeatherRequestResponse]
+    
+    // MARK: Public Functions
     
     init() {
         self.list = []

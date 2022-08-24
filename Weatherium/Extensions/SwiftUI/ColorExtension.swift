@@ -10,6 +10,8 @@ import SwiftUI
 
 extension Color {
     
+    // MARK: Public Properties
+    
     static var lightText: Color {
         Color(uiColor: .lightText)
     }

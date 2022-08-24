@@ -9,6 +9,8 @@ import Foundation
 
 extension URLRequest {
     
+    // MARK: Public Functions
+    
     // allows init with optional URL value
     init?(url: URL?) {
         guard let url = url

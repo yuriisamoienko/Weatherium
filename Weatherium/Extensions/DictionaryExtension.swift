@@ -9,14 +9,7 @@ import Foundation
 
 extension Dictionary {
     
-    // serialize dictionary to Data format
-    func toData() throws -> Data {
-        let result = try JSONSerialization.data(
-            withJSONObject: self,
-            options: []
-        )
-        return result
-    }
+    // MARK: Public Functions
     
     //MOD
     init(fromJsonData data: Data) throws {
@@ -27,10 +20,13 @@ extension Dictionary {
         self += value
     }
     
-    static func += (left: inout [Key: Value], right: [Key: Value]) {
-        for (k, v) in right {
-            left[k] = v
-        }
+    // serialize dictionary to Data format
+    func toData() throws -> Data {
+        let result = try JSONSerialization.data(
+            withJSONObject: self,
+            options: []
+        )
+        return result
     }
     
     func toJsonString() -> String? {
@@ -41,9 +37,19 @@ extension Dictionary {
         }
         return result
     }
+    
+    
+    static func += (left: inout [Key: Value], right: [Key: Value]) {
+        for (k, v) in right {
+            left[k] = v
+        }
+    }
+    
 }
-//
+
 extension Dictionary where Key == String {
+    
+    // MARK: Public Functions
     
     //MOD new
     // replaces keys values in self with values from input dict of equial keys

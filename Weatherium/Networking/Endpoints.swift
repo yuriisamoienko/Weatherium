@@ -22,6 +22,8 @@ enum NetworkEnpoint {
     case weather(latitude: Double, longitude: Double)
     case forecast(latitude: Double, longitude: Double)
     case weatherIcon(id: String, scaleFactor: Double)
+    
+    // MARK: Public Properties
                   
     var urlData: EndpointUrlData {
         
@@ -80,6 +82,8 @@ enum NetworkEnpoint {
         }
         return result
     }
+    
+    // MARK: Public Functions
     
     func createEndpointUrl() throws -> URL {
         let apiUrlStr = self.apiUrl

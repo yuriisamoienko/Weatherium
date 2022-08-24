@@ -10,6 +10,8 @@ import Foundation
 
 extension Sequence {
     
+    // MARK: Public Functions
+    
     func asyncForEach(
         _ operation: (Element) async throws -> Void
     ) async rethrows {

@@ -8,5 +8,9 @@
 import Foundation
 
 struct ForecastData {
+    
+    // MARK: Public Properties
+    
     let list: [WeatherData]
+    
 }

@@ -9,6 +9,8 @@ import Foundation
 
 extension Set {
     
+    // MARK: Public Functions
+    
     func contains(allFrom array: Array<Element>) -> Bool {
         var result = true
         for item in array {

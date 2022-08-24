@@ -9,8 +9,12 @@ import Foundation
 import SwiftUI
 
 struct NavigationBarBackgroundColorModifier: ViewModifier {
+    
+    // MARK: Private Properties
 
-    var backgroundColor: Color
+    private let backgroundColor: Color
+    
+    // MARK: Public Functions
 
     init(background: Color) {
         self.backgroundColor = background
@@ -18,8 +22,6 @@ struct NavigationBarBackgroundColorModifier: ViewModifier {
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = backgroundColor
-//        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//            coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
         UINavigationBar.appearance().standardAppearance = coloredAppearance
         UINavigationBar.appearance().compactAppearance = coloredAppearance
@@ -42,6 +44,8 @@ struct NavigationBarBackgroundColorModifier: ViewModifier {
 }
 
 extension View {
+    
+    // MARK: Public Functions
 
     func navigationBarColor(background: Color) -> some View {
         self.modifier(NavigationBarBackgroundColorModifier(background: background))

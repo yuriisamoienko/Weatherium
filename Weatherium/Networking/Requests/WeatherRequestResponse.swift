@@ -8,6 +8,9 @@
 import Foundation
 
 struct WeatherRequestResponse: EasyCodable {
+    
+    // MARK: Types
+    
     struct WeatherInfo: EasyCodable {
         let description: String
         let icon: String
@@ -17,6 +20,7 @@ struct WeatherRequestResponse: EasyCodable {
             icon = ""
         }
     }
+    
     struct MainInfo: EasyCodable {
         let temp_min: Double
         let temp_max: Double
@@ -26,9 +30,14 @@ struct WeatherRequestResponse: EasyCodable {
             temp_min = 0
         }
     }
+    
+    // MARK: Public Properties
+    
     let weather: [WeatherInfo]
     let main: MainInfo
     let dt: Double
+    
+    // MARK: Public Functions
     
     init() {
         weather = []

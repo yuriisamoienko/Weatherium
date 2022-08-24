@@ -14,16 +14,6 @@ struct MainView: View {
     @ObservedObject var viewModel: CitiesViewModel
     @ObservedObject var weatherViewModel: WeatherViewModel
     
-    // MARK: Private Properties
-    
-    @State private var showCityWeather = false
-    @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
-    @State private var searchText = ""
-    
-    private let router = NavigationRouter() //TODO protocol and @Inject
-    
-    // MARK: Public Functions
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -72,6 +62,15 @@ struct MainView: View {
         }
         .navigationViewStyle(.stack) // fixes error "Unable to simultaneously satisfy constraints..."
     }
+    
+    // MARK: Private Properties
+    
+    @State private var showCityWeather = false
+    @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
+    @State private var searchText = ""
+    
+    private let router = NavigationRouter() //TODO protocol and @Inject
+    
 }
 
 struct MainView_Previews: PreviewProvider {

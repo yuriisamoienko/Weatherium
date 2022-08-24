@@ -9,6 +9,8 @@ import Foundation
 
 extension UnitTemperature {
     
+    // MARK: Public Properties
+    
     static var local: UnitTemperature {
         let measureFormatter = MeasurementFormatter()
         let measurement = Measurement(value: 0, unit: UnitTemperature.celsius)

@@ -17,12 +17,7 @@ struct CityWeatherView: View {
     private var weather: WeatherData = WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
     private var forecast: ForecastData = .init(list: [WeatherData]())
     
-    // MARK: Public Functions
-    
-    init(city: CityData, weatherViewModel: WeatherViewModel ) {
-        self.city = city
-        self.weatherViewModel = weatherViewModel
-    }
+    // MARK: Public Properties
     
     var body: some View {
         List {
@@ -85,6 +80,15 @@ struct CityWeatherView: View {
         }
     }
     
+    // MARK: Public Functions
+    
+    init(city: CityData, weatherViewModel: WeatherViewModel ) {
+        self.city = city
+        self.weatherViewModel = weatherViewModel
+    }
+    
+    // MARK: Private Functions
+    
     private func get5DaysForecast(from forecast: ForecastData) -> [DayForecast] {
         var result: [DayForecast] = []
         let forecastList = forecast.list
@@ -116,6 +120,7 @@ struct CityWeatherView: View {
         }
         return result
     }
+    
 }
 
 struct CityWeatherView_Previews: PreviewProvider {

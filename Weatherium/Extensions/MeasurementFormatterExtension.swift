@@ -8,6 +8,8 @@
 import Foundation
 
 extension MeasurementFormatter {
+    
+    // MARK: Public Functions
  
     static func convert(temperature: Int, from inputTempType: UnitTemperature, to outputTempType: UnitTemperature) -> String {
         return convert(temperature: Double(temperature), from: inputTempType, to: outputTempType)

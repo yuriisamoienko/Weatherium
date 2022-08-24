@@ -8,6 +8,9 @@
 import Foundation
 
 struct WeatherData {
+    
+    // MARK: Public Properties
+    
     let weatherDescription: String
     let temperature: WeatherTemperature
     let icon: String
@@ -17,10 +20,15 @@ struct WeatherData {
 }
 
 struct WeatherTemperature: Equatable {
+    
+    // MARK: Public Properties
+    
     let high: Int
     let low: Int
     
     static let invalid = WeatherTemperature(high: Int.max, low: Int.min )
+    
+    // MARK: Public Functions
     
     func isInvalid() -> Bool {
         let result = self == Self.invalid

@@ -9,6 +9,8 @@ import Foundation
 
 extension TimeZone {
     
+    // MARK: Public Properties
+    
     var hoursFromGtm: Int {
         let secondsFromGMT: Int = self.secondsFromGMT()
         let result = Int(Double(secondsFromGMT)/Double(3600))

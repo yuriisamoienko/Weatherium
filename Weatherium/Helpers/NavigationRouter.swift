@@ -25,6 +25,8 @@ enum NavigationScreen {
 
 //TODO protocol
 struct NavigationRouter {
+    
+    // MARK: Public Functions
 
     /*
      NavigationLink doens't work if not located on the visible screen area

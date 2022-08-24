@@ -9,9 +9,13 @@ import Foundation
 
 // custom error with cide and message
 struct CError: LocalizedError {
+    
+    // MARK: Public Properties
 
     let message: String
     let code: Int
+    
+    // MARK: Public Functions
 
     init(code: Int = 0, message: String) {
         self.message = message

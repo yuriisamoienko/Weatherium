@@ -9,8 +9,12 @@ import Foundation
 import SwiftUI
 
 struct NavigationBarTintColorModifier: ViewModifier {
+    
+    // MARK: Private Properties
 
-    var tint: Color
+    private let tint: Color
+    
+    // MARK: Public Functions
 
     init(tint: Color) {
         self.tint = tint
@@ -19,21 +23,13 @@ struct NavigationBarTintColorModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-//        ZStack{
-//            content
-//            VStack {
-//                GeometryReader { geometry in
-//                    backgroundColor
-//                        .frame(height: geometry.safeAreaInsets.top)
-//                        .edgesIgnoringSafeArea(.top)
-//                    Spacer()
-//                }
-//            }
-//        }
     }
+    
 }
 
 extension View {
+    
+    // MARK: Public Functions
 
     func navigationBarColor(tint: Color) -> some View {
         self.modifier(NavigationBarTintColorModifier(tint: tint))

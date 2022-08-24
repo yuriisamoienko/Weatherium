@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct WeatheriumApp: App {
+    
+    // MARK: Public Properties
+    
     var body: some Scene {
         WindowGroup {
             let cityViewModel = CitiesViewModel()  //TODO @Inject
@@ -19,4 +22,5 @@ struct WeatheriumApp: App {
             .environmentObject(AppSettings())
         }
     }
+    
 }

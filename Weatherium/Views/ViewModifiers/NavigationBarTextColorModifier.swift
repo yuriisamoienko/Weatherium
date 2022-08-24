@@ -9,18 +9,15 @@ import Foundation
 import SwiftUI
 
 struct NavigationBarTextColorModifier: ViewModifier {
+    
+    // MARK: Private Properties
 
-    var textColor: UIColor
+    private let textColor: UIColor
+    
+    // MARK: Public Functions
 
     init(text: Color) {
         self.textColor = UIColor(text)
-//        UINavigationBar.appearance().tintColor = UIColor(tint)
-        
-//        let coloredAppearance = UINavigationBarAppearance()
-//        coloredAppearance.configureWithTransparentBackground()
-//        coloredAppearance.backgroundColor = backgroundColor
-//        coloredAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//            coloredAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
         let standardAppearance = UINavigationBar.appearance().standardAppearance //?? UINavigationBarAppearance()
         let compactAppearance = UINavigationBar.appearance().compactAppearance ?? UINavigationBarAppearance()
@@ -38,17 +35,6 @@ struct NavigationBarTextColorModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-//        ZStack{
-//            content
-//            VStack {
-//                GeometryReader { geometry in
-//                    backgroundColor
-//                        .frame(height: geometry.safeAreaInsets.top)
-//                        .edgesIgnoringSafeArea(.top)
-//                    Spacer()
-//                }
-//            }
-//        }
     }
 }
 
