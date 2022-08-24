@@ -41,7 +41,8 @@ enum NetworkEnpoint {
                 "lat": "\(latitude)",
                 "lon": "\(longitude)",
             ])
-        case .weatherIcon(let icon, let scaleFactor):
+        case .weatherIcon(let icon, _):
+            let scaleFactor = 2 //openweathermap have only @2x icons
             result = .init(
                 path: "\(icon)@\(Int(scaleFactor))x.png"
             )

@@ -97,7 +97,8 @@ struct CityListCellView: View {
     
     private func getIconUrl() -> URL? {
         let scaleFactor = UIScreen.main.scale
-        return try? NetworkEnpoint.weatherIcon(id: iconId, scaleFactor: scaleFactor).createEndpointUrl()
+        let result = try? NetworkEnpoint.weatherIcon(id: iconId, scaleFactor: scaleFactor).createEndpointUrl()
+        return result
     }
 }
 
