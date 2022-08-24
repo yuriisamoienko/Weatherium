@@ -23,7 +23,7 @@ Also implemented:
 
 Remarks:
 - Swift Concurrecny and Combine are used to have some Demo with the technologies
-- 'country: Philippines' was added to 'Manila' city, because Geocoder couldn't resolve original value without specific country
+- 'country' property was added to cities list, because Geocoder couldn't resolve original value without specific country
 - NavigationRouter curently is as abstract as possible
 - EasyCodable allows easily encode & decode (serialize & deserialize) class & struct instances. It allows create instances from redundant jsons (which constains more keys then needed) !!! It's very useful when parsing network request responses
 - Dark mode isn't supported yet
