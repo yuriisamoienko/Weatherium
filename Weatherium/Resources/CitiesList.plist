@@ -7,96 +7,128 @@
 		<integer>2643743</integer>
 		<key>name</key>
 		<string>London</string>
+        <key>country</key>
+        <string>England</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>293396</integer>
 		<key>name</key>
 		<string>TelAviv</string>
+        <key>country</key>
+        <string>Israel</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>5128581</integer>
 		<key>name</key>
 		<string>NewYork</string>
+        <key>country</key>
+        <string>United States</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>2800866</integer>
 		<key>name</key>
 		<string>Brussels</string>
+        <key>country</key>
+        <string>Belgium</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>3128760</integer>
 		<key>name</key>
 		<string>Barcelona</string>
+        <key>country</key>
+        <string>Spain</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>2988507</integer>
 		<key>name</key>
 		<string>Paris</string>
+        <key>country</key>
+        <string>France</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>1850147</integer>
 		<key>name</key>
 		<string>Tokyo</string>
+        <key>country</key>
+        <string>Japan</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>1816670</integer>
 		<key>name</key>
 		<string>Beijing</string>
+        <key>country</key>
+        <string>China</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>2147714</integer>
 		<key>name</key>
 		<string>Sydney</string>
+        <key>country</key>
+        <string>Australia</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>3432043</integer>
 		<key>name</key>
 		<string>BuenosAires</string>
+        <key>country</key>
+        <string>Argentina</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>4164138</integer>
 		<key>name</key>
 		<string>Miami</string>
+        <key>country</key>
+        <string>United States</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>6173331</integer>
 		<key>name</key>
 		<string>Vancouver</string>
+        <key>country</key>
+        <string>Canada</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>524901</integer>
 		<key>name</key>
 		<string>Moscow</string>
+        <key>country</key>
+        <string>Russia</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>1609350</integer>
 		<key>name</key>
 		<string>Bangkok</string>
+        <key>country</key>
+        <string>Thailand</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>993800</integer>
 		<key>name</key>
 		<string>Johannesburg</string>
+        <key>country</key>
+        <string>South Africa</string>
 	</dict>
 	<dict>
 		<key>id</key>
 		<integer>2464470</integer>
 		<key>name</key>
 		<string>Tunis</string>
+        <key>country</key>
+        <string>Africa</string>
 	</dict>
 	<dict>
 		<key>id</key>

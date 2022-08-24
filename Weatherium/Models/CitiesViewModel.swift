@@ -37,9 +37,9 @@ import CoreLocation
         if coordinate == nil {
             var address = city.name
             if let country = city.country {
-                address += ", \(country)"
+                address += " \(country)"
             }
-            address += " \(city.id)"
+//            address += " \(city.id)" //doens't help to geocode
             
             do {
                 let placemarks: [CLPlacemark] = try await CLGeocoder().geocodeAddressString(address)
