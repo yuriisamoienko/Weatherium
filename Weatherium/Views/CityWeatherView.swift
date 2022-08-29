@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CityWeatherView<ViewModel>: View where ViewModel: CityWeatherViewModelPl { // so we can use property wrappers on protocol
+struct CityWeatherView<ViewModel>: View where ViewModel: CityWeatherViewModelPl { // <ViewModel> so we can use property wrappers on protocol
     
     // MARK: Private Properties
     

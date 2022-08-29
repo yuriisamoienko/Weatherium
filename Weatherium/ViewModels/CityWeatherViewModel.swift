@@ -56,15 +56,17 @@ class CityWeatherViewModel: CityWeatherViewModelPl {
     
     private func subscribe() {
         subscriptions = [
-            weatherViewModel.$citiesWeather.sink(receiveValue: {  [weak self] (citiesWeather: CitiesWeathers) in
+            weatherViewModel.$citiesWeather.sink(receiveValue: { [weak self] (citiesWeather: CitiesWeathers) in
                 guard let self = self else { return }
                 let city = self.city
-                let weatherViewModel = self.weatherViewModel
                 
-                self.weather = weatherViewModel.citiesWeather[city] ?? Self.emptyWeather()
-                let forecast = weatherViewModel.citiesForecast[city] ?? Self.emptyForecast()
-                self.forecastDays5 = self.get5DaysForecast(from: forecast)
+                self.weather = citiesWeather[city] ?? Self.emptyWeather()
             }),
+            weatherViewModel.$citiesForecast.sink(receiveValue: { [weak self] (forecasts: CitiesForecasts) in
+                guard let self = self else { return }
+                let forecast = forecasts[self.city] ?? Self.emptyForecast()
+                self.forecastDays5 = self.get5DaysForecast(from: forecast)
+            })
         ]
     }
     

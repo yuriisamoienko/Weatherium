@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct CitiesListView: View {
+struct CitiesListView<ViewModel>: View where ViewModel: CitiesListViewModelPl { // <ViewModel> so we can use property wrappers on protocol
     
     // MARK: Public Properties
+    
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {
@@ -25,12 +27,10 @@ struct CitiesListView: View {
                 }
                 
                 List {
-                    let filteredCities = viewModel.cities.filter {
-                        searchText.isEmpty || $0.name.lowercased().contains(searchText.lowercased())
-                    }
-                    ForEach(0 ..< filteredCities.count, id: \.self) { index in
+                    let filteredCities = viewModel.cities
+                    ForEach(0 ..< viewModel.cities.count, id: \.self) { index in
                         let city = filteredCities[index]
-                        let weather: WeatherData = weatherViewModel.citiesWeather[city] ?? .invalid
+                        let weather: WeatherData = viewModel.weathers[city] ?? .invalid
                         let weatherIcon = weather.icon
                         
                         CityListCellView(
@@ -57,7 +57,7 @@ struct CitiesListView: View {
                 .navigationBarColor(tint: .white)
                 .navigationBarColor(text: .white)
             }
-            .searchable(text: $searchText)
+            .searchable(text: $viewModel.searchText)
             .toolbar {
                 TemperatureSwitcherButton()
             }
@@ -68,21 +68,19 @@ struct CitiesListView: View {
     
     // MARK: Private Properties
     
+    /* Navigation begin */
     @State private var showCityWeather = false
     @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
-    @State private var searchText = ""
-    
-    @ObservedObject private var viewModel: CitiesViewModel = DependenciesInjector.shared.resolve()
-    @ObservedObject private var weatherViewModel: WeatherViewModel = DependenciesInjector.shared.resolve()
     
     @Inject
     private var router: NavigationRouter
+    /* Navigation end */
     
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        CitiesListView()
+        CitiesListView(viewModel: CitiesListViewModel())
         .environmentObject(AppSettings())
     }
 }

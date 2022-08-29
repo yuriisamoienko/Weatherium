@@ -48,6 +48,7 @@
 		5AE736B428BCBB160048C2F2 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B328BCBB160048C2F2 /* Types.swift */; };
 		5AE736B628BCC2BB0048C2F2 /* DependenciesInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */; };
 		5AE736B828BCD91B0048C2F2 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B728BCD91B0048C2F2 /* DayForecast.swift */; };
+		5AE736BA28BCF5B50048C2F2 /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B928BCF5B50048C2F2 /* CitiesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		5AE736B328BCBB160048C2F2 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesInjector.swift; sourceTree = "<group>"; };
 		5AE736B728BCD91B0048C2F2 /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
+		5AE736B928BCF5B50048C2F2 /* CitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */,
+				5AE736B928BCF5B50048C2F2 /* CitiesListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				5A3EA02328B2A7120043BEC2 /* WeatherData.swift in Sources */,
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,
 				5A3EA03B28B3D8A70043BEC2 /* DateExtension.swift in Sources */,
+				5AE736BA28BCF5B50048C2F2 /* CitiesListViewModel.swift in Sources */,
 				5A3EA03928B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift in Sources */,
 				5A3EA01128B2333C0043BEC2 /* SetExtension.swift in Sources */,
 				5A58AF0828B0E34900FDFF70 /* CityListCellView.swift in Sources */,
