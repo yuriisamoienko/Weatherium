@@ -18,7 +18,13 @@ struct MainView: View {
         NavigationView {
             ZStack {
                 if let selectedCity = self.selectedCity {
-                    router.navigationLink(to: .weatherInCity(selectedCity, weatherViewModel), isActive: $showCityWeather) // navigationLink doens't work if not located on the visible screen area
+                    router.navigationLink(
+                        to: .weatherInCity(
+                            selectedCity,
+                            CityWeatherViewModel(city: selectedCity, weatherViewModel: weatherViewModel)
+                        ),
+                        isActive: $showCityWeather
+                    ) // navigationLink doens't work if not located on the visible screen area
                 }
                 
                 List {
@@ -80,5 +86,6 @@ struct MainView_Previews: PreviewProvider {
             viewModel: cityViewModel, //TODO @Inject
             weatherViewModel: WeatherViewModel(citiesViewModel: cityViewModel) //TODO @Inject
         )
+        .environmentObject(AppSettings())
     }
 }

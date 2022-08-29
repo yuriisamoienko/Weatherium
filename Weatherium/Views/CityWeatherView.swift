@@ -11,19 +11,16 @@ struct CityWeatherView: View {
     
     // MARK: Private Properties
     
-    @ObservedObject private var weatherViewModel: WeatherViewModel
-    
-    private let city: CityData
-    private var weather: WeatherData = WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
-    private var forecast: ForecastData = .init(list: [WeatherData]())
+    @ObservedObject private var viewModel: CityWeatherViewModel
     
     // MARK: Public Properties
     
     var body: some View {
+        let city = viewModel.city
+        
         List {
             VStack {
-                let weather =  weatherViewModel.citiesWeather[city] ?? WeatherData(weatherDescription: "", temperature: .invalid, icon: "", timestamp: -1)
-                let forecast: ForecastData = weatherViewModel.citiesForecast[city] ?? .init(list: [WeatherData]())
+                let weather = viewModel.weather
                 let weatherIcon = weather.icon
                 
                 CityListCellView(
@@ -39,13 +36,10 @@ struct CityWeatherView: View {
                 
                 Spacer(minLength: 30)
                 
-                
-                
-                let next5daysForecast = get5DaysForecast(from: forecast)
-                
+                let next5daysForecast = viewModel.forecastDays5
                 
                 ForEach(0 ..< next5daysForecast.count, id: \.self) { dayIndex in
-                    let dayForecast: DayForecast = next5daysForecast[dayIndex]
+                    let dayForecast: CityWeatherViewModel.DayForecast = next5daysForecast[dayIndex]
                     
                     Text(dayForecast.day.capitalizingFirstLetter())
                         .font(.title3)
@@ -73,7 +67,7 @@ struct CityWeatherView: View {
         }
         .navigationBarTitle(city.name, displayMode: .large)
         .onAppear {
-            weatherViewModel.updateForecastOf(city: city)
+            viewModel.updateForecast()
         }
         .toolbar {
             TemperatureSwitcherButton()
@@ -82,57 +76,28 @@ struct CityWeatherView: View {
     
     // MARK: Public Functions
     
-    init(city: CityData, weatherViewModel: WeatherViewModel ) {
-        self.city = city
-        self.weatherViewModel = weatherViewModel
+    init(city: CityData, viewModel: CityWeatherViewModel ) {
+        // keep city data for future injection
+        self.viewModel = viewModel
     }
     
     // MARK: Private Functions
-    
-    private func get5DaysForecast(from forecast: ForecastData) -> [DayForecast] {
-        var result: [DayForecast] = []
-        let forecastList = forecast.list
-        
-        if forecastList.isEmpty == false {
-            let today = Date()
-            
-            let sixthDayLocalMidnightTimestamp = today.byAdding(days: 6).withLocalTimeZone().timeIntervalSince1970
-            let dictLocaldayWeathers = forecastList.reduce(into: [String: [WeatherData]]()) { partialResult, weather in
-                let weatherTimestamp = weather.timestamp
-                if sixthDayLocalMidnightTimestamp <= weatherTimestamp {
-                    return // we don't need 6th day and further
-                }
-                let localDay = Date(timeIntervalSince1970: weatherTimestamp).toString(format: "EEEE")
-                var weathersOfLocalDay = partialResult[localDay] ?? [WeatherData]()
-                weathersOfLocalDay.append(weather)
-                partialResult[localDay] = weathersOfLocalDay
-            }
-            
-            let dayNamesOrderedList = Array(0..<5).map { today.byAdding(days: $0).toString(format: "EEEE") }
-            
-            for dayName in dayNamesOrderedList {
-                guard let weathersOfLocalDay = dictLocaldayWeathers[dayName] else {
-                    continue
-                }
-                result.append(DayForecast(day: dayName, list: weathersOfLocalDay))
-            }
-            
-        }
-        return result
-    }
     
 }
 
 struct CityWeatherView_Previews: PreviewProvider {
     static var previews: some View {
+        let city = CityData(id: 6173331, name: "Vancouver", country: "Canada")
         CityWeatherView(
-            city: CityData(id: 6173331, name: "Vancouver", country: nil),
-            weatherViewModel: WeatherViewModel(citiesViewModel: CitiesViewModel()) //TODO @Inject
+            city: city,
+            viewModel: CityWeatherViewModel( //TODO @Inject
+                city: city,
+                weatherViewModel: WeatherViewModel(citiesViewModel: CitiesViewModel()) //TODO @Inject
+            )
         )
+        .environmentObject(AppSettings())
     }
 }
 
-fileprivate struct DayForecast {
-    let day: String
-    let list: [WeatherData]
-}
+
+fileprivate typealias DayForecast = CityWeatherViewModel.DayForecast

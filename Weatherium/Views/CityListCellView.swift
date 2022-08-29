@@ -115,5 +115,6 @@ struct CityListCellView_Previews: PreviewProvider {
         .padding()
         .previewDisplayName("Default preview")
         .preferredColorScheme(.light)
+        .environmentObject(AppSettings())
     }
 }

@@ -44,6 +44,8 @@
 		5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */; };
 		5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1B28B1092F00FDFF70 /* CError.swift */; };
 		5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */; };
+		5AE736B228BCB33D0048C2F2 /* CityWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */; };
+		5AE736B428BCBB160048C2F2 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B328BCBB160048C2F2 /* Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		5A58AF1428B0EE3E00FDFF70 /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		5A58AF1B28B1092F00FDFF70 /* CError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CError.swift; sourceTree = "<group>"; };
 		5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewModel.swift; sourceTree = "<group>"; };
+		5AE736B328BCBB160048C2F2 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 				5A3EA02228B2A7120043BEC2 /* WeatherData.swift */,
 				5A3EA02428B2A7240043BEC2 /* CityData.swift */,
 				5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */,
+				5AE736B328BCBB160048C2F2 /* Types.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -183,14 +188,15 @@
 		5A58AEF628B0D36F00FDFF70 /* Weatherium */ = {
 			isa = PBXGroup;
 			children = (
-				5A3EA03728B3C95F0043BEC2 /* Info.plist */,
-				5A3EA02728B2A8BF0043BEC2 /* Networking */,
 				5A58AF0E28B0ED7400FDFF70 /* Extensions */,
 				5A58AF1328B0EE3000FDFF70 /* Helpers */,
+				5A3EA03728B3C95F0043BEC2 /* Info.plist */,
 				5A58AF0B28B0EC0B00FDFF70 /* Models */,
+				5A3EA02728B2A8BF0043BEC2 /* Networking */,
 				5A58AEFD28B0D37300FDFF70 /* Preview Content */,
 				5A58AF0628B0E2C900FDFF70 /* Resources */,
 				5A3EA00A28B13E400043BEC2 /* SupportingFiles */,
+				5AE736B028BCB30B0048C2F2 /* ViewModels */,
 				5A58AF0528B0E2C400FDFF70 /* Views */,
 				5A58AEF728B0D36F00FDFF70 /* WeatheriumApp.swift */,
 			);
@@ -281,6 +287,14 @@
 			path = types;
 			sourceTree = "<group>";
 		};
+		5AE736B028BCB30B0048C2F2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -366,6 +380,7 @@
 				5A3EA02B28B345900043BEC2 /* NetworkRequestService.swift in Sources */,
 				5A3EA03628B3C8AD0043BEC2 /* ColorExtension.swift in Sources */,
 				5A3EA03228B3C6490043BEC2 /* NavigationBarTintColorModifier.swift in Sources */,
+				5AE736B228BCB33D0048C2F2 /* CityWeatherViewModel.swift in Sources */,
 				5A3EA00F28B1463B0043BEC2 /* URLRequestExtension.swift in Sources */,
 				5A3EA02D28B34C3A0043BEC2 /* ForecastData.swift in Sources */,
 				5A3EA01828B2800C0043BEC2 /* WeatherRequestResponse.swift in Sources */,
@@ -383,6 +398,7 @@
 				5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */,
 				5A3EA02528B2A7240043BEC2 /* CityData.swift in Sources */,
 				5A3EA01D28B2A3520043BEC2 /* NavigationBarBackgroundColorModifier.swift in Sources */,
+				5AE736B428BCBB160048C2F2 /* Types.swift in Sources */,
 				5A3EA02928B2A8E10043BEC2 /* Endpoints.swift in Sources */,
 				5A3EA02328B2A7120043BEC2 /* WeatherData.swift in Sources */,
 				5A58AEF828B0D36F00FDFF70 /* WeatheriumApp.swift in Sources */,

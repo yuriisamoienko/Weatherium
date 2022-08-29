@@ -11,8 +11,10 @@ import Combine
 
 @MainActor class WeatherViewModel: ObservableObject {
     
-    @Published var citiesWeather: [CityData: WeatherData] = [:]
-    @Published var citiesForecast: [CityData: ForecastData] = [:]
+    // MARK: Public Properties
+    
+    @Published var citiesWeather: CitiesWeathers = [:]
+    @Published var citiesForecast: CitiesForecasts = [:]
     
     var citiesViewModel: CitiesViewModel
 
