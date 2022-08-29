@@ -14,7 +14,7 @@ struct WeatheriumApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView()
+            CitiesListView()
             .environmentObject(AppSettings())
         }
     }

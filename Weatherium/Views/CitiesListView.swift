@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct CitiesListView: View {
     
     // MARK: Public Properties
     
@@ -82,7 +82,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        CitiesListView()
         .environmentObject(AppSettings())
     }
 }
