@@ -11,9 +11,6 @@ struct MainView: View {
     
     // MARK: Public Properties
     
-    @ObservedObject var viewModel: CitiesViewModel
-    @ObservedObject var weatherViewModel: WeatherViewModel
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -21,7 +18,7 @@ struct MainView: View {
                     router.navigationLink(
                         to: .weatherInCity(
                             selectedCity,
-                            CityWeatherViewModel(city: selectedCity, weatherViewModel: weatherViewModel)
+                            CityWeatherViewModel(city: selectedCity)
                         ),
                         isActive: $showCityWeather
                     ) // navigationLink doens't work if not located on the visible screen area
@@ -75,17 +72,17 @@ struct MainView: View {
     @State private var selectedCity: CityData? = CityData(id: -1, name: "", country: nil) // fixes "no animation on first tap to weather details"
     @State private var searchText = ""
     
-    private let router = NavigationRouter() //TODO protocol and @Inject
+    @ObservedObject private var viewModel: CitiesViewModel = DependenciesInjector.shared.resolve()
+    @ObservedObject private var weatherViewModel: WeatherViewModel = DependenciesInjector.shared.resolve()
+    
+    @Inject
+    private var router: NavigationRouter
     
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        let cityViewModel = CitiesViewModel()  //TODO @Inject
-        MainView(
-            viewModel: cityViewModel, //TODO @Inject
-            weatherViewModel: WeatherViewModel(citiesViewModel: cityViewModel) //TODO @Inject
-        )
+        MainView()
         .environmentObject(AppSettings())
     }
 }

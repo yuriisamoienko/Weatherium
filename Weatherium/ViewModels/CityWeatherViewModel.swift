@@ -26,13 +26,12 @@ Represents data of CityWeatherView
     
     private var subscriptions = Set<AnyCancellable>()
     
-    @ObservedObject private var weatherViewModel: WeatherViewModel
+    @ObservedObject private var weatherViewModel: WeatherViewModel = DependenciesInjector.shared.resolve()
     
     // MARK: Public Functions
     
-    init(city: CityData, weatherViewModel: WeatherViewModel ) {
+    init(city: CityData) {
         self.city = city
-        self.weatherViewModel = weatherViewModel
         subscribe()
     }
     

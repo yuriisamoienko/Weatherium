@@ -90,10 +90,7 @@ struct CityWeatherView_Previews: PreviewProvider {
         let city = CityData(id: 6173331, name: "Vancouver", country: "Canada")
         CityWeatherView(
             city: city,
-            viewModel: CityWeatherViewModel( //TODO @Inject
-                city: city,
-                weatherViewModel: WeatherViewModel(citiesViewModel: CitiesViewModel()) //TODO @Inject
-            )
+            viewModel: CityWeatherViewModel(city: city)
         )
         .environmentObject(AppSettings())
     }

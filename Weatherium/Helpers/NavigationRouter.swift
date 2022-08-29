@@ -11,7 +11,7 @@ import SwiftUI
 
 enum NavigationScreen {
     
-    case weatherInCity(CityData, CityWeatherViewModel) // TODO @Inject WeatherViewModel
+    case weatherInCity(CityData, CityWeatherViewModel)
     //case ...
     
     var destination: some View {

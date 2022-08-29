@@ -14,13 +14,19 @@ struct WeatheriumApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let cityViewModel = CitiesViewModel()  //TODO @Inject
-            MainView(
-                viewModel: cityViewModel, //TODO @Inject
-                weatherViewModel: WeatherViewModel(citiesViewModel: cityViewModel) //TODO @Inject
-            )
+            MainView()
             .environmentObject(AppSettings())
         }
+    }
+    
+    // MARK: Private Properties
+    
+    private let dependencyInjector = DependenciesInjector.shared
+    
+    // MARK: Public Functions
+    
+    init() {
+        dependencyInjector.inject()
     }
     
 }

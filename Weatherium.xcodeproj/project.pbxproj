@@ -46,6 +46,7 @@
 		5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */; };
 		5AE736B228BCB33D0048C2F2 /* CityWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */; };
 		5AE736B428BCBB160048C2F2 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B328BCBB160048C2F2 /* Types.swift */; };
+		5AE736B628BCC2BB0048C2F2 /* DependenciesInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		5A58AF1E28B120EA00FDFF70 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewModel.swift; sourceTree = "<group>"; };
 		5AE736B328BCBB160048C2F2 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesInjector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +268,7 @@
 				5A58AF1D28B11D9E00FDFF70 /* types */,
 				5A58AF1828B0F5A800FDFF70 /* protocols */,
 				5A3EA02F28B36ACA0043BEC2 /* NavigationRouter.swift */,
-				5A3EA03828B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift */,
+				5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				5A58AF1128B0EDC200FDFF70 /* EasyCodable.swift */,
+				5A3EA03828B3CCF20043BEC2 /* DependenciesInjectorProtocol.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				5A3EA04628B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift in Sources */,
 				5A3EA03D28B3E4170043BEC2 /* ArrayExtension.swift in Sources */,
 				5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */,
+				5AE736B628BCC2BB0048C2F2 /* DependenciesInjector.swift in Sources */,
 				5A58AF1528B0EE3E00FDFF70 /* DictionaryExtension.swift in Sources */,
 				5A58AF1C28B1092F00FDFF70 /* CError.swift in Sources */,
 				5A3EA01428B262730043BEC2 /* ViewExtension.swift in Sources */,

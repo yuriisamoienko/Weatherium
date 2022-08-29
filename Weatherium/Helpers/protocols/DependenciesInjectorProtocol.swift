@@ -11,6 +11,18 @@ protocol DependenciesInjectorProtocol {
     func inject()
 }
 
+extension DependenciesInjectorProtocol {
+    
+    func addDependency<T>(_ factory: @escaping () -> T) {
+        Dependencies.root.add(factory)
+    }
+    
+    func resolve<T>() -> T { // in case if you can't use property wrapper @Inject
+        Dependencies.root.resolve()
+    }
+    
+}
+
 class Dependencies {
 
     public static var root: Dependencies = {
@@ -53,22 +65,18 @@ public struct Inject<Value> {
  
  open class DependenciesInjector: NSObject, DependenciesInjectorProtocol {
      
-     public func add<T>(_ factory: @escaping () -> T) {
-         Dependencies.root.add(factory)
-     }
-
      open func inject() {
          let viewControllerFactory: ViewControllerFactoryProtocol = ViewControllerFactory()
-         add({ viewControllerFactory as ViewControllerFactoryProtocol })
-         
-         let appRouter: AppRouterProtocol = AppRouter()
-         add({ appRouter as AppRouterProtocol })
+         addDependency({ viewControllerFactory as ViewControllerFactoryProtocol })
+                 
+         addDependency appRouter: AppRouterProtocol = AppRouter()
+         addDependency({ appRouter as AppRouterProtocol })
          
          let coreLogic: CoreLogicProtocol = CoreLogic()
-         add({ coreLogic as CoreLogicProtocol })
+         addDependency({ coreLogic as CoreLogicProtocol })
          
          //crash and non fatal errors reporting
-         let crashReporter: CrashReporterProtocol = FirebaseCrashlyticsFacade()
+         addDependency crashReporter: CrashReporterProtocol = FirebaseCrashlyticsFacade()
          add({ crashReporter as CrashReporterProtocol })
      }
  }

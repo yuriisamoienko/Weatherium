@@ -16,19 +16,16 @@ import Combine
     @Published var citiesWeather: CitiesWeathers = [:]
     @Published var citiesForecast: CitiesForecasts = [:]
     
-    var citiesViewModel: CitiesViewModel
-
     // MARK: Private Properties
     
     private var subscriptions = Set<AnyCancellable>()
-    private let networkRequestService: NetworkRequestServicePl = NetworkRequestService() //TODO @Injected
     
+    @Inject private var citiesViewModel: CitiesViewModel
+    @Inject private var networkRequestService: NetworkRequestServicePl
     
     // MARK: Public Functions
     
-    init(citiesViewModel: CitiesViewModel) {
-        self.citiesViewModel = citiesViewModel
-        
+    init() {
         subscriptions = [
             citiesViewModel.$cities.sink(receiveValue: { (cities: [CityData]) in
                 self.updateCitiesWeather(for: cities)
