@@ -10,14 +10,12 @@ import CachedAsyncImage
 
 struct CityListCellView: View {
     
-    // MARK: Properties
+    // MARK: Public Properties
     
     let name: String
     let weatherDescription: String
     let temperature: WeatherTemperature
     let iconId: String
-    
-    @EnvironmentObject private var appSettings: AppSettings
     
     var body: some View {
         GeometryReader { bodyGeometry in
@@ -92,6 +90,10 @@ struct CityListCellView: View {
             )
         }
     }
+    
+    // MARK: Private Properties
+    
+    @EnvironmentObject private var appSettings: AppSettings
     
     // MARK: Private Functions
     
