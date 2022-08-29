@@ -10,17 +10,30 @@ import SwiftUI
 import Combine
 
 /*
-Represents data of CityWeatherView
+    Represents data of CityWeatherView
 */
 
-@MainActor class CityWeatherViewModel: ObservableObject {
+protocol CityWeatherViewModelPl: ObservableObject {
+    
+    var city: CityData { get }
+    var weather: WeatherData { get }
+    var forecastDays5: [DayForecast] { get }
+    
+    func updateForecast()
+    
+}
+
+class CityWeatherViewModel: CityWeatherViewModelPl {
     
     // MARK: Public Properties
     
     let city: CityData
     
-    @Published var weather: WeatherData = CityWeatherViewModel.emptyWeather()
-    @Published var forecastDays5: [DayForecast] = []
+    @Published internal private(set)
+    var weather: WeatherData = CityWeatherViewModel.emptyWeather()
+    
+    @Published internal private(set)
+    var forecastDays5: [DayForecast] = []
     
     // MARK: Private Properties
     
@@ -93,13 +106,6 @@ Represents data of CityWeatherView
     
     private static func emptyForecast() -> ForecastData {
         .init(list: [WeatherData]())
-    }
-    
-    // MARK: Types
-    
-    struct DayForecast {
-        let day: String
-        let list: [WeatherData]
     }
     
 }

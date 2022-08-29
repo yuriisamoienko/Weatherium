@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CityWeatherView: View {
+struct CityWeatherView<ViewModel>: View where ViewModel: CityWeatherViewModelPl { // so we can use property wrappers on protocol
     
     // MARK: Private Properties
     
-    @ObservedObject private var viewModel: CityWeatherViewModel
+    @ObservedObject private var viewModel: ViewModel
     
     // MARK: Public Properties
     
@@ -39,7 +39,7 @@ struct CityWeatherView: View {
                 let next5daysForecast = viewModel.forecastDays5
                 
                 ForEach(0 ..< next5daysForecast.count, id: \.self) { dayIndex in
-                    let dayForecast: CityWeatherViewModel.DayForecast = next5daysForecast[dayIndex]
+                    let dayForecast: DayForecast = next5daysForecast[dayIndex]
                     
                     Text(dayForecast.day.capitalizingFirstLetter())
                         .font(.title3)
@@ -76,7 +76,7 @@ struct CityWeatherView: View {
     
     // MARK: Public Functions
     
-    init(city: CityData, viewModel: CityWeatherViewModel ) {
+    init(city: CityData, viewModel: ViewModel ) {
         // keep city data for future injection
         self.viewModel = viewModel
     }
@@ -95,6 +95,3 @@ struct CityWeatherView_Previews: PreviewProvider {
         .environmentObject(AppSettings())
     }
 }
-
-
-fileprivate typealias DayForecast = CityWeatherViewModel.DayForecast

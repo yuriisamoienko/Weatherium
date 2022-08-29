@@ -47,6 +47,7 @@
 		5AE736B228BCB33D0048C2F2 /* CityWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */; };
 		5AE736B428BCBB160048C2F2 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B328BCBB160048C2F2 /* Types.swift */; };
 		5AE736B628BCC2BB0048C2F2 /* DependenciesInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */; };
+		5AE736B828BCD91B0048C2F2 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B728BCD91B0048C2F2 /* DayForecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		5AE736B128BCB33D0048C2F2 /* CityWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewModel.swift; sourceTree = "<group>"; };
 		5AE736B328BCBB160048C2F2 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesInjector.swift; sourceTree = "<group>"; };
+		5AE736B728BCD91B0048C2F2 /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				5A3EA02428B2A7240043BEC2 /* CityData.swift */,
 				5A3EA02C28B34C3A0043BEC2 /* ForecastData.swift */,
 				5AE736B328BCBB160048C2F2 /* Types.swift */,
+				5AE736B728BCD91B0048C2F2 /* DayForecast.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				5A58AF1F28B120EA00FDFF70 /* WeatherViewModel.swift in Sources */,
 				5A3EA02528B2A7240043BEC2 /* CityData.swift in Sources */,
 				5A3EA01D28B2A3520043BEC2 /* NavigationBarBackgroundColorModifier.swift in Sources */,
+				5AE736B828BCD91B0048C2F2 /* DayForecast.swift in Sources */,
 				5AE736B428BCBB160048C2F2 /* Types.swift in Sources */,
 				5A3EA02928B2A8E10043BEC2 /* Endpoints.swift in Sources */,
 				5A3EA02328B2A7120043BEC2 /* WeatherData.swift in Sources */,
