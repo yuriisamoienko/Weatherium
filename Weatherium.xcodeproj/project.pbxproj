@@ -49,6 +49,7 @@
 		5AE736B628BCC2BB0048C2F2 /* DependenciesInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */; };
 		5AE736B828BCD91B0048C2F2 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B728BCD91B0048C2F2 /* DayForecast.swift */; };
 		5AE736BA28BCF5B50048C2F2 /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736B928BCF5B50048C2F2 /* CitiesListViewModel.swift */; };
+		5AE736BC28BDF9D80048C2F2 /* AnyPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE736BB28BDF9D80048C2F2 /* AnyPublished.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		5AE736B528BCC2BB0048C2F2 /* DependenciesInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependenciesInjector.swift; sourceTree = "<group>"; };
 		5AE736B728BCD91B0048C2F2 /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		5AE736B928BCF5B50048C2F2 /* CitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
+		5AE736BB28BDF9D80048C2F2 /* AnyPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyPublished.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				5A58AF1B28B1092F00FDFF70 /* CError.swift */,
+				5AE736BB28BDF9D80048C2F2 /* AnyPublished.swift */,
 			);
 			path = types;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				5A3EA04828B401E60043BEC2 /* UnitTemperature.swift in Sources */,
 				5A58AF1228B0EDC200FDFF70 /* EasyCodable.swift in Sources */,
 				5A3EA01A28B280380043BEC2 /* ForecastRequestResponse.swift in Sources */,
+				5AE736BC28BDF9D80048C2F2 /* AnyPublished.swift in Sources */,
 				5A3EA04628B3FF7A0043BEC2 /* TemperatureSwitcherButton.swift in Sources */,
 				5A3EA03D28B3E4170043BEC2 /* ArrayExtension.swift in Sources */,
 				5A58AF0D28B0EC2200FDFF70 /* CitiesViewModel.swift in Sources */,

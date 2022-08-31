@@ -33,7 +33,8 @@ class CitiesListViewModel: CitiesListViewModelPl {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    @ObservedObject private var citiesViewModel: CitiesViewModel = DependenciesInjector.shared.resolve()
+    @Inject
+    private var citiesViewModel: CitiesViewModelPl
     @ObservedObject private var weatherViewModel: WeatherViewModel = DependenciesInjector.shared.resolve()
     
     // MARK: Public Functions
@@ -46,7 +47,7 @@ class CitiesListViewModel: CitiesListViewModelPl {
     
     private func subscribe() {
         subscriptions = [
-            Publishers.CombineLatest(citiesViewModel.$cities, $searchText).sink(receiveValue: { [weak self] value in
+            Publishers.CombineLatest(citiesViewModel.cities, $searchText).sink(receiveValue: { [weak self] value in
                 guard let self = self else { return }
                 let cities: [CityData] = value.0
                 let searchText = value.1

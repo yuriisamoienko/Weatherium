@@ -24,8 +24,8 @@ open class DependenciesInjector: NSObject, DependenciesInjectorProtocol {
 
     @MainActor
     open func inject() {
-        let citiesViewModel = CitiesViewModel()
-        addDependency({ citiesViewModel as CitiesViewModel })
+        let citiesViewModel: CitiesViewModelPl = CitiesViewModel()
+        addDependency({ citiesViewModel as CitiesViewModelPl })
         
         let weatherViewModel = WeatherViewModel()
         addDependency({ weatherViewModel as WeatherViewModel })

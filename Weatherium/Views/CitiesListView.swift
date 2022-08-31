@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CitiesListView<ViewModel>: View where ViewModel: CitiesListViewModelPl { // <ViewModel> so we can use property wrappers on protocol
+struct CitiesListView<ViewModel>: View where ViewModel: CitiesListViewModelPl { // <ViewModel> so we can use property wrappers on ObservableObject protocols
     
     // MARK: Public Properties
     

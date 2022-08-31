@@ -20,14 +20,14 @@ import Combine
     
     private var subscriptions = Set<AnyCancellable>()
     
-    @Inject private var citiesViewModel: CitiesViewModel
+    @Inject private var citiesViewModel: CitiesViewModelPl
     @Inject private var networkRequestService: NetworkRequestServicePl
     
     // MARK: Public Functions
     
     init() {
         subscriptions = [
-            citiesViewModel.$cities.sink(receiveValue: { (cities: [CityData]) in
+            citiesViewModel.cities.sink(receiveValue: { (cities: [CityData]) in
                 self.updateCitiesWeather(for: cities)
             }),
         ]

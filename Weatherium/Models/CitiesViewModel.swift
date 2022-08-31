@@ -8,12 +8,21 @@
 import Foundation
 import Combine
 import CoreLocation
+import SwiftUI
 
-@MainActor class CitiesViewModel: ObservableObject {
+protocol CitiesViewModelPl {
+    
+    var cities: AnyPublished<[CityData]> { get }
+    
+    func getCoordinateOf(city: CityData) async -> CLLocationCoordinate2D?
+    
+}
+
+class CitiesViewModel: CitiesViewModelPl {
     
     // MARK: Public Properties
 
-    @Published var cities: [CityData] = []
+    var cities: AnyPublished<[CityData]> = .init([])
     
     // MARK: Private Properties
     
@@ -24,7 +33,7 @@ import CoreLocation
     init() {
         Task {
             do {
-                cities = try await loadCities()
+                cities.val = try await loadCities()
             } catch {
                 print("init cities failed with error \(error)")
             }
